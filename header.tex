@@ -1,0 +1,44 @@
+%!tex root=handbook.tex
+% ===============================
+%    Kodierung und Sprache
+% ===============================
+% \usepackage[T1]{fontenc} % ermoeglicht die Silbentrennung von Woertern mit Umlauten
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[ngerman]{translator}
+
+% -----[ revision history ]----------
+\usepackage{vhistory}
+% -----[ Creative Commons License ]----------
+\usepackage[scale=1.5]{ccicons}
+
+% ===============================
+%    Tabellen und Abbildungen
+% ===============================
+\usepackage{graphicx} % ermoeglicht einbinden von Graphiken
+\usepackage{subfigure} % ermoeglicht Bilder nebeneinander aufzureihen
+\usepackage{tabularx} % ermoeglicht seitenbreite Tabellen
+\usepackage{booktabs} % schoenere Tabellen
+\usepackage{multirow}
+%\usepackage{longtable} % ermoeglicht Tabellen mit Seitenumbruch
+\usepackage{amsmath}
+\usepackage{xfrac} % ermoeglich schräg gestellte Brüche mit \sfrac{}{}
+\usepackage[locale=DE]{siunitx} % for SI-Units
+\sisetup{
+  per-mode=fraction,
+  fraction-function=\sfrac
+}
+\usepackage{wasysym} % \permil
+\usepackage{enumerate} % Nummeriung aendern
+\usepackage{listings}
+\usepackage{rotating}
+\usepackage{tikz}
+% \usepackage{framed} % Rahmen zeichnen
+
+% ===============================
+%    chapter/section numbering
+% ===============================
+\newcounter{question}
+\newcommand{\aufgabe}{\stepcounter{question}\bigskip\par\noindent{\normalfont\large\bfseries Aufgabe \arabic{question}}\medskip\par\noindent}
+\makeatletter\@addtoreset{chapter}{part}\makeatother%

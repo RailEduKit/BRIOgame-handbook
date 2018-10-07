@@ -1,0 +1,328 @@
+% Hinweis:
+% Alle Einstellungen, die dem Briefschreiber und seinem Institut zugeordnet sind,
+% stehen jeweils in einer eigenen .lco-Datei.
+% Der Brief lädt dann die Autorendatei, welche wiederum die Institutsdatei lädt
+\documentclass[
+    nexus,      % Schriftart Arial wählen
+    % mono ,    % Darstellung in schwarz -weiß
+    10pt,        % gewählte Schriftgröße (standard)
+    oneside,
+    draft=true,
+    green,
+    % paper=a5, paper=landscape,
+]{tubsbook} % class from http://tubslatex.ejoerns.de/
+
+\input{header.tex}
+
+\logo{\includegraphics[height=\tubslogoHeight]{instituts_logo.pdf}}
+
+\title{Verkehrsfluss bei Bahnsystemen}
+\subtitle{Lernspiel}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle[image,logo=right]
+
+\section*{Ziel und Materialien}
+  \noindent Ziel des Lernspieles ist die Fahrdynamik von Zügen im Zusammenhang mit Blockteilung zu simulieren und zu erfahren.
+  Dafür wird benötigt:
+  \begin{itemize}
+    \item zwei Züge mit unterschiedlicher Fahrdynamik
+    \item eine Strecke, bestehend aus Spielfeldern
+    \item Halteplätze für die Züge
+    \item Signale für die Blockteilung
+    \item ggf. Weichen
+  \end{itemize}
+  Reale kontinuierliche Größen Zeit ($t$) und Strecke ($s$) werden dabei in diskrete Einheiten von Runden ($t$) und Felder ($s$) eingeteilt.
+  Die Simulation erfolgt also Rundenbasiert, um im Schrittverfahren einen Computer nachzuahmen.
+  % Eine Runde ist eine Zeiteinheit, in der sich Züge um eine Distanz/Felder fortbewegen.
+  \vfill
+  {\noindent\large Version \vhCurrentVersion\ vom \vhCurrentDate } \\[0.5cm]
+  \ccLogo \ccAttribution ~Dieses Werk steht unter der Creative Commons Lizens (CC BY 4.0).
+
+\newpage
+  \newcommand{\MS}{Martin Scheidt}
+  \newcommand{\FN}{Felix Nebel}
+  \newcommand{\LG}{Lukas Gruber}
+  \begin{versionhistory}
+    %\vhEntry{<Version>}{<Date>}{<Authors>}{<Changes>}
+    \vhEntry{0.1}{17.04.2018}{MS|FN|LG}{ersten Prototyp mit Fahrdynamik erstellt}
+    \vhEntry{0.2}{15.05.2018}{MS|LG}{Lehrspiel mit Blocklogik erweitert}
+    \vhEntry{0.3}{03.09.2018}{MS}{Handbuch erstellt}
+  \end{versionhistory}
+  \vhListAllAuthorsLongWithAbbrev
+  \vfill
+  \tableofcontents
+
+\part{Anleitung}
+\chapter{Aufbau der Strecke}
+  \noindent Die Strecke besteht aus einer beliebigen Anzahl von Feldern. An die Strecke können Signale oder Bahnsteigkanten angeordnet werden.\\[0.5cm]
+  \begin{center}
+  \begin{tikzpicture}[>=latex]
+    \coordinate (base) at (0,0);
+    \draw [dashed] ([shift={(base)}] 0,0) rectangle ++(1,0.5);
+    \draw [dashed] ([shift={(base)}] 15,0) rectangle ++(1,0.5);
+    \foreach \x in {1,...,14}
+      \draw ([shift={(base)}] \x,0) rectangle ++(1,0.5);
+    \draw [<->] ([shift={(base)}] 10.5,0.9) -- ++ (4,0) node [fill=white,midway] {Zugbewegung};
+    \draw ([shift={(base)}] 5,1.1) -- ++(0,-0.4) -- ++ (3,0) -- ++(0,0.4);
+    \draw ([shift={(base)}] 5,0.8) -- ++ (3,0) node [above,midway] {Bahnsteig};
+    % distant signal
+    \draw [dashed] ([shift={(base)}] 2,-0.1) -- ++(0,-0.2) -- ++(1,0) -- ++(0,0.2);
+    \path[draw, line width=1pt] ([shift={(base)}] 2,-0.5) -- ++(0,-0.2);
+    \path[draw, line width=1pt] ([shift={(base)}] 2,-0.6) -- ++(0.5,0);
+    \path[draw, fill] ([shift={(base)}] 2.5,-0.75) rectangle ++(0.2,0.3);
+    \path[draw, fill] ([shift={(base)}] 2.5,-0.45) arc (90:270:0.15);
+    \draw [->] ([shift={(base)}] 5.0,-0.5) -- ([shift={(base)}] 2.9,-0.6) node [near start,align=right,fill=white] {Vorsignal};
+    % main signal
+    \draw [dashed] ([shift={(base)}] 9,-0.1) -- ++(0,-0.2) -- ++(1,0) -- ++(0,0.2);
+    \path[draw, line width=1pt] ([shift={(base)}] 9,-0.5) -- ++(0,-0.2);
+    \path[draw, line width=1pt] ([shift={(base)}] 9,-0.6) -- ++(0.5,0);
+    \path[draw, fill] ([shift={(base)}] 9.5,-0.75) rectangle ++(0.2,0.3);
+    \path[draw, fill] ([shift={(base)}] 9.7,-0.75) arc (90:270:-0.15);
+    \draw [->] ([shift={(base)}] 6.5,-1.2) -- ([shift={(base)}] 8.9,-0.6) node [near start,align=right,fill=white] {Hauptsignal};
+    % axle counter
+    \path[draw, line width=1pt] ([shift={(base)}] 9.85,-0.4) -- ++(0.3,0);
+    \path[draw, line width=1pt, fill] ([shift={(base)}]  9.94,-0.4) circle (0.04);
+    \path[draw, line width=1pt, fill] ([shift={(base)}] 10.06,-0.4) circle (0.04);
+    \draw [->] ([shift={(base)}] 13.5,-0.8) -- ([shift={(base)}] 10.2,-0.45) node [near start,align=right,fill=white] {Gleisfreimeldegrenze};
+  \end{tikzpicture}
+  \end{center}
+
+\chapter{Signalbegriffe}
+
+  \noindent Das Hauptsignal darf nur Fahrt zeigen, wenn im nachfolgenden Blockabschnitt (von Gleisfreimeldegrenze zu Gleisfreimeldegrenze) kein Zug ist.
+  Das Vorsignal steht im Bremswegabstand vor dem Hauptsignal und spiegelt den Signalbegriff vom Hauptsignal.
+  
+  \begin{center}
+  \begin{tabular}{rcc}
+  \toprule
+  & Halt & Fahrt \\
+  \hline
+  Hauptsignal &
+  \begin{tikzpicture}[anchor=base,baseline=-3]
+    \draw [fill=red] (0,0) circle (0.3);
+    \draw (-0.3,0) -- (0.3,0);
+    \path (-0.5,-0.5) rectangle ++(1,1); % background rectangle to unify every cell containing a symbol
+  \end{tikzpicture} &
+  \begin{tikzpicture}[anchor=base,baseline=-3]
+    \draw [fill=green] (0,0) circle (0.3);
+    \draw (0,-0.3) -- (0,0.3);
+    \path (-0.5,-0.5) rectangle ++(1,1); % background rectangle to unify every cell containing a symbol
+  \end{tikzpicture} \\
+  Vorsignal   &
+  \begin{tikzpicture}[anchor=base,baseline=-3]
+    \draw [fill=yellow] (0,0) circle (0.3);
+    \draw (-0.22,-0.22) -- ++(0.44,0.44);
+    \path (-0.5,-0.5) rectangle ++(1,1); % background rectangle to unify every cell containing a symbol
+  \end{tikzpicture} &
+  \begin{tikzpicture}[anchor=base,baseline=-3]
+    \draw [fill=green] (0,0) circle (0.3);
+    \draw (0,-0.3) -- (0,0.3);
+    \path (-0.5,-0.5) rectangle ++(1,1); % background rectangle to unify every cell containing a symbol
+  \end{tikzpicture} \\
+  \bottomrule
+  \end{tabular}
+  \end{center}
+
+\chapter{Simulation der Fahrdynamik}
+  \noindent Die Simulation erfolgt Rundenbasiert.\\ Jede Runde besteht aus mindestens zwei aufeinanderfolgenden Schritten:
+  \begin{enumerate}
+    \item Der Zug macht die Bewegung, die in der vorhergehenden Runde gesetzt wurde.
+    \item Alle Signale werden entsprechend der Gleisbelegung eingestellt.
+    \item (optional) Eine neue Schalthebelposition kann gewählt werden.
+  \end{enumerate}
+   Beim Start des Spiels steht der Zug. Schalthebelposition beginnen bei dem Feld ``$0$''.
+   Die unterschiedliche Fahrdynamik von Zügen wird durch unterschiedliche mögliche Schalthebelbewegung abgebildet.
+
+\newpage
+\chapter{Beispiel}
+  Der Schalthebel wird entlang der grünen Pfeile bewegt. Schalthebelpositionen für einen Personenzug:
+  \begin{center}
+  \begin{tikzpicture}[scale=0.8]
+    \coordinate (base) at (0,0);
+    % arrows
+    \draw [->,>=latex,line width=1.5pt,green] (1.5,0)  .. controls ( 2,-0.5) and ( 4,-0.5) .. ( 4.5,0);
+    \draw [->,>=latex,line width=1.5pt,green] (5.5,0)  .. controls ( 6,-0.5) and ( 8,-0.5) .. ( 8.5,0);
+    \draw [->,>=latex,line width=1.5pt,green] (9.5,0)  .. controls (10,-0.5) and (12,-0.5) .. (12.5,0);
+    \draw [<-,>=latex,line width=1.5pt,green] (1.5,2)  .. controls ( 2,2.5) and ( 4,2.5) .. ( 4.5,2);
+    \draw [<-,>=latex,line width=1.5pt,green] (5.5,2)  .. controls ( 6,2.5) and ( 8,2.5) .. ( 8.5,2);
+    \draw [<-,>=latex,line width=1.5pt,green] (9.5,2)  .. controls (10,2.5) and (12,2.5) .. (12.5,2);
+    \foreach \x in {0,4,8,12}
+      \draw [fill=white] ([shift={(base)}] \x,0) rectangle ++(2,2);
+    \node [align=center] at ( 1,1.6) {\si{\kilo\metre\per\hour}};
+    \node [align=center] at ( 1,1  ) {\Large $0$};
+    \node [align=center] at ( 1,0.3) {\color{blue} $0$ Felder};
+    \node [align=center] at ( 5,1.6) {\si{\kilo\metre\per\hour}};
+    \node [align=center] at ( 5,1  ) {\Large $40$};
+    \node [align=center] at ( 5,0.3) {\color{blue} $1$ Feld};
+    \node [align=center] at ( 9,1.6) {\si{\kilo\metre\per\hour}};
+    \node [align=center] at ( 9,1  ) {\Large $80$};
+    \node [align=center] at ( 9,0.3) {\color{blue} $2$ Felder};
+    \node [align=center] at (13,1.6) {\si{\kilo\metre\per\hour}};
+    \node [align=center] at (13,1  ) {\Large $120$};
+    \node [align=center] at (13,0.3) {\color{blue} $3$ Felder};
+  \end{tikzpicture}
+  \end{center}
+  Ein Zug soll auf folgender Strecke beschleunigen:
+  \begin{center}
+  \begin{tikzpicture}[>=latex]
+    \coordinate (base) at (0,0);
+    \draw [dashed] ([shift={(base)}] 10,0) rectangle ++(1,0.5);
+    \foreach \x in {-2,...,9}
+      \draw ([shift={(base)}] \x,0) rectangle ++(1,0.5) node [below=18pt,left,align=right] {\tiny \x};
+    \draw ([shift={(base)}] -2,1.1) -- ++(0,-0.4) -- ++ (3,0) -- ++(0,0.4);
+    \draw ([shift={(base)}] -2,0.8) -- ++ (3,0) node [above,midway] {Bf A};
+    \path[draw, line width=1pt, fill=white] (0.9,0.25) -- ++(-0.2,-0.2) -- ++(-2.6,0) -- ++(0,0.4) -- ++(2.6,0) -- cycle; % train
+    \draw [->] ([shift={(base)}] 5,1.4) -- ([shift={(base)}] 0.85,0.35) node [near start,align=right,fill=white] {Zug (Fahrtrichtung rechts)};
+  \end{tikzpicture}
+  \end{center}
+  Für den Verlauf des Lernspiels beginnen wir mit der ersten Runde und befolgen den Ablauf aus vorheringen Abschnitt \emph{Simulation der Fahrdynamik}.
+  In der ersten Runde steht der Zug aus der Anfangsbedingung. Im Beispiel gibt es keine Signale die eingestellt werden können.
+  Wir können den Schalthebel um eine Position auf \SI{40}{\kilo\metre\per\hour} nach vorne bewegen. Die Runde ist beendet.
+
+  Die zweite Runde beginnt mit dem Ausführen der Bewegung um ein Feld nach rechts.
+  Der Schalthebel kann wieder weiterbewegt und die Runde ist damit beendent.
+  Die dritte Runde beginnt mit dem Ausführen der Bewegung um \emph{zwei} Felder nach rechts.
+  Der Schalthebel kann wieder weiterbewegt und die Runde ist damit beendent.
+  Und so weiter, bis man auf der Position auf \SI{120}{\kilo\metre\per\hour} angekommen ist und der Zug sich gleichmäßig mit drei Felder pro Runde weiter bewegt.\\[0.5cm]
+  \begin{tabular}{rcccl}
+  \toprule
+  Runde & aktuelle   & 1.Schritt & 2.Schritt   & \\
+        & Geschwind- & Bewegen   & Schalthebel & \\
+        & igkeit     & um        & auf         & \\
+  \hline
+  $1$   & \SI{0}{\kilo\metre\per\hour} & $0$ Felder & \SI{40}{\kilo\metre\per\hour} &
+  \begin{tikzpicture}[scale=0.6]
+    \coordinate (base) at (0,0);
+    \draw [dashed] ([shift={(base)}] 10,0) rectangle ++(1,0.5);
+    \foreach \x in {-2,...,9}
+      \draw ([shift={(base)}] \x,0) rectangle ++(1,0.5) node [above=5pt,left,align=right] {\tiny \x};
+    \path[draw, line width=1pt, fill=white] (0.9,0.25) -- ++(-0.2,-0.2) -- ++(-2.6,0) -- ++(0,0.4) -- ++(2.6,0) -- cycle; % train
+  \end{tikzpicture} \\
+  $2$   & \SI{40}{\kilo\metre\per\hour} & $1$ Felder & \SI{80}{\kilo\metre\per\hour} &
+  \begin{tikzpicture}[scale=0.6]
+    \coordinate (base) at (0,0);
+    \draw [dashed] ([shift={(base)}] 10,0) rectangle ++(1,0.5);
+    \foreach \x in {-2,...,9}
+      \draw ([shift={(base)}] \x,0) rectangle ++(1,0.5) node [above=5pt,left,align=right] {\tiny \x};
+    \path[draw, line width=1pt, fill=white] (1.9,0.25) -- ++(-0.2,-0.2) -- ++(-2.6,0) -- ++(0,0.4) -- ++(2.6,0) -- cycle; % train
+  \end{tikzpicture} \\
+  $3$   & \SI{80}{\kilo\metre\per\hour} & $2$ Felder & \SI{120}{\kilo\metre\per\hour} &
+  \begin{tikzpicture}[scale=0.6]
+    \coordinate (base) at (0,0);
+    \draw [dashed] ([shift={(base)}] 10,0) rectangle ++(1,0.5);
+    \foreach \x in {-2,...,9}
+      \draw ([shift={(base)}] \x,0) rectangle ++(1,0.5) node [above=5pt,left,align=right] {\tiny \x};
+    \path[draw, line width=1pt, fill=white] (3.9,0.25) -- ++(-0.2,-0.2) -- ++(-2.6,0) -- ++(0,0.4) -- ++(2.6,0) -- cycle; % train
+  \end{tikzpicture} \\
+  $4$   & \SI{120}{\kilo\metre\per\hour} & $3$ Felder & \SI{120}{\kilo\metre\per\hour} &
+  \begin{tikzpicture}[scale=0.6]
+    \coordinate (base) at (0,0);
+    \draw [dashed] ([shift={(base)}] 10,0) rectangle ++(1,0.5);
+    \foreach \x in {-2,...,9}
+      \draw ([shift={(base)}] \x,0) rectangle ++(1,0.5) node [above=5pt,left,align=right] {\tiny \x};
+    \path[draw, line width=1pt, fill=white] (6.9,0.25) -- ++(-0.2,-0.2) -- ++(-2.6,0) -- ++(0,0.4) -- ++(2.6,0) -- cycle; % train
+  \end{tikzpicture} \\
+  $5$   & \SI{120}{\kilo\metre\per\hour} & $3$ Felder & \SI{120}{\kilo\metre\per\hour} &
+  \begin{tikzpicture}[scale=0.6]
+    \coordinate (base) at (0,0);
+    \draw [dashed] ([shift={(base)}] 10,0) rectangle ++(1,0.5);
+    \foreach \x in {-2,...,9}
+      \draw ([shift={(base)}] \x,0) rectangle ++(1,0.5) node [above=5pt,left,align=right] {\tiny \x};
+    \path[draw, line width=1pt, fill=white] (9.9,0.25) -- ++(-0.2,-0.2) -- ++(-2.6,0) -- ++(0,0.4) -- ++(2.6,0) -- cycle; % train
+  \end{tikzpicture} \\
+  etc. & & & & \\
+  \bottomrule
+  \end{tabular}
+
+\part{Ablauf}
+  \chapter{Stufe}
+  \section{Einführung Fahrdynamik}
+    \subsection*{Ausgangssituation}
+    \begin{itemize}
+      \item ein Zug,
+      \item Strecke mit Feldern $-2$ bis $37$,
+      \item Bahnsteig A am Feld $-2$ bis $0$,
+      \item Bahnsteig B am Feld $14$ bis $16$,
+      \item Bahnsteig C am Feld $35$ bis $37$.
+    \end{itemize}
+    \aufgabe
+    Der Zug (auf Feld $0$ in Richtung $37$) steht und hat seinen Schalthebel auf \SI{0}{\kilo\metre\per\hour}.
+    \begin{enumerate}[a)]
+      \item Wenn der Zug maximal beschleunigt, bis zu welchen Feld gelangt er in \emph{neun} Runden?
+      \item Wie viele Runden benötigt man minimal, wenn der Zug in jedem Bahnhof halten soll?
+    \end{enumerate}
+    Notiere die Lösungschritte in einem Protokoll!
+    \begin{center}
+      Beispiel für ein Protokoll:\\
+      \begin{tabular}{cccc|c}
+        \toprule
+        Runde   & aktuelle                    & (1. Schritt)& aktuelle          & (2. Schritt)                  \\
+                & Geschwindigkeit             & Bewegen um  & Position Zugspitze& Schalthebel auf               \\
+        \hline
+        $1$     & \SI{0}{\kilo\metre\per\hour}& $0$ Felder  & Feld $0$          & \SI{40}{\kilo\metre\per\hour} \\
+        \hline
+        $2$     & $\cdots$                    &             &                   &                               \\
+        \hline
+        $\vdots$&                             &             &                   &                               \\
+        \hline 
+                &                             &             &                   &                               \\
+        \bottomrule
+      \end{tabular}
+    \end{center}
+    \aufgabe
+    Der Zug (auf Feld $0$ in Richtung $37$) fährt gerade durch den ersten Bahnhof durch und hat seinen Schalthebel auf der maximalen Geschwindigkeit. 
+    \begin{enumerate}[a)]
+      \item Wie viele Felder braucht der Zug, bis er zum Stehen gekommen ist?
+      \item Wie viele Runden benötigt man, wenn der Zug ohne Halt die Strecke vollständig verlassen soll?
+    \end{enumerate}
+
+  \newpage
+  \section{Sicht- und Bremsweg}
+    \subsection*{Ausgangssituation}
+
+    Unbekannte Strecke mit verschiedenen Sichtverhältnissen:\\[0.5cm]
+    \begin{tabular}{rl}
+      \toprule
+      Sichtverhältnis & Sicht in Feldern \\
+      \hline
+      Sehr gut & 3 \\
+      Normal   & 2 \\
+      Schlecht & 1 \\
+      \bottomrule
+    \end{tabular}
+    \aufgabe
+    \begin{enumerate}[a)]
+      \item Wie schnell kann der Zug bei sehr gutem Sichtverhältnis maximal Fahren um vor einem Hindernis rechtzeitig anzuhalten?
+      \item Wie viele Runden benötigt man minimal, um gefahrlos bei normalen Sichtverhältnissen in einem $14$ Felder entfernten Bahnhof zu gelangen?
+      \item Wie viele Felder weit müsste man sehen können, um \SI{160}{\kilo\metre\per\hour} fahren zu können?
+    \end{enumerate}
+
+  \chapter{Stufe}
+  \section{Blockteilung}
+    \subsection*{Ausgangssituation}
+    Ein Zug und eine beliebig lange Strecke, mit mindestens 3 vollständigen Blöcken.
+    Ein Block besteht aus: Sichtpunkt, Vorsignal, Hauptsignal, Signalzugschlussstelle und Räumweg.
+    \aufgabe
+    \begin{enumerate}[a)]
+      \item Platziere die Vor- und Hauptsignale mindestens so, dass \SI{160}{\kilo\metre\per\hour} gefahren werden kann und schlechte Sichtverhältnisse nicht zur Beeinträchtigung führt!
+      \item Wie viele Runden ist ein Block mit einer Zugfahrt belegt (vollständige Sperrzeit)?
+    \end{enumerate}
+
+  \newpage
+  \section{Verkehrsfluss}
+    \subsection*{Ausgangssituation}
+    \begin{itemize}
+      \item Zwei verschiedene Züge mit unterschiedlicher Fahrdynamik.
+      \item Beliebige Länge der Strecke, mit mindestens 3 vollständigen Blöcken.
+      \item Am Anfang und Ende der Strecke kann jeweils ein Bahnhof mit Weichen angeordnet werden oder die Strecke im Kreis geführt werden.
+    \end{itemize}
+    \aufgabe
+    \begin{enumerate}[a)]
+      \item Wie viele Runden benötigt man, wenn beide Züge behinderungsfrei fahren sollen und der schnelle vor dem langsamen Zug fährt?
+      \item Wie viele Runden benötigt man, wenn beide Züge behinderungsfrei fahren sollen und der langsame vor dem schnellen Zug fährt?
+    \end{enumerate}
+
+\end{document}
