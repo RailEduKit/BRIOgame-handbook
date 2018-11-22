@@ -1,44 +1,125 @@
-%!tex root=handbook.tex
-% ===============================
-%    Kodierung und Sprache
-% ===============================
-% \usepackage[T1]{fontenc} % ermoeglicht die Silbentrennung von Woertern mit Umlauten
-\usepackage{ucs}
-\usepackage[utf8x]{inputenc}
-\usepackage[ngerman]{babel}
-\usepackage[ngerman]{translator}
+%!TEX TS-program = pdflatexmk
+%!TEX root = handbook.tex
 
-% -----[ revision history ]----------
+% Copyright 2018 Martin Scheidt (ISC license)
+% Permission to use, copy, modify, and/or distribute this file for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
+
+% --------[  Coding and Language  ]----------
+\usepackage{scrhack}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[main=english,ngerman]{babel}
+\usepackage{iflang}
+
+% % --------[   revision history    ]----------
 \usepackage{vhistory}
-% -----[ Creative Commons License ]----------
+% % --------[ Creative Commons License ]-------
 \usepackage[scale=1.5]{ccicons}
 
-% ===============================
-%    Tabellen und Abbildungen
-% ===============================
-\usepackage{graphicx} % ermoeglicht einbinden von Graphiken
-\usepackage{subfigure} % ermoeglicht Bilder nebeneinander aufzureihen
-\usepackage{tabularx} % ermoeglicht seitenbreite Tabellen
-\usepackage{booktabs} % schoenere Tabellen
-\usepackage{multirow}
-%\usepackage{longtable} % ermoeglicht Tabellen mit Seitenumbruch
-\usepackage{amsmath}
-\usepackage{xfrac} % ermoeglich schräg gestellte Brüche mit \sfrac{}{}
-\usepackage[locale=DE]{siunitx} % for SI-Units
+% --------[       drafting        ]----------
+\usepackage{ifdraft}
+\ifdraft{%
+  \usepackage{draftwatermark}
+  \SetWatermarkColor{solarized-base1!10}
+}{}
+%
+\setlength{\marginparwidth }{2cm}
+\usepackage[obeyDraft,textsize=footnotesize]{todonotes}
+
+% --------[ Layout  ]-----------
+\pretolerance=8000
+\tolerance=9500
+\hbadness=8000
+\vbadness=10000
+\displaywidowpenalty=10000
+\clubpenalty=10000
+\widowpenalty=10000
+\usepackage{microtype}
+\usepackage{lmodern}
+\usepackage{mathptmx,courier}
+\usepackage[scaled=0.92]{helvet}
+
+\usepackage[
+  automark,
+  headsepline,
+  draft=false
+]{scrlayer-scrpage}
+
+\pagestyle{scrheadings}
+
+\usepackage{etoolbox}
+\makeatletter
+% \@addtoreset{chapter}{part} % reset chapter numbering for each part
+\patchcmd{\scr@startchapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{} % remove page break after chapter
+\makeatother
+
+% -----------[ PDF linking ]----------------
+\usepackage[
+  pdftex,
+  pdfpagelabels, % modify PDF page labels
+  hyperindex,
+  hyperfigures,
+  bookmarksopen,
+  bookmarksnumbered,
+  draft=false,
+  pageanchor=true, % Determines whether every page is given an implicit anchor at the top left corner
+  %pagebackref, % Adds backlink text to the end of each item in the bibliography, as a list of page numbers
+  %linktocpage, % make page number, not text, be link on TOC, LOF and LOT
+  breaklinks=true, % allow links to break over lines by making links over multiple lines into PDF links to the same target
+  colorlinks=true, % Colors the text of links and anchors
+  citecolor=solarized-violet, % Color for bibliographical citations in text
+  linkcolor=solarized-base01, % Color for normal internal links
+  urlcolor=solarized-blue, % Color for web links
+]{hyperref} % PDF with a linked TableOfContent
+\usepackage{bookmark} % Adding package bookmark improves bookmarks handling.
+\usepackage{url}
+
+% -------[ PDF Informations ]---------
+\hypersetup{
+  pdftitle={Traffic Flow in Railway Systems},
+  pdfsubject={game based learning},
+  pdfauthor={Martin Scheidt and contributers},
+  pdfkeywords={railway, railroad, infrastructure, serious game},
+}
+
+% -------[ Symbols ]---------
+\usepackage{amsmath,amsthm}
+\usepackage{xfrac} % provides slanted fractures with \sfrac{}{}
+\usepackage{wasysym} % \permil
+\usepackage{siunitx} % for SI-Units
 \sisetup{
   per-mode=fraction,
   fraction-function=\sfrac
 }
-\usepackage{wasysym} % \permil
-\usepackage{enumerate} % Nummeriung aendern
-\usepackage{listings}
-\usepackage{rotating}
-\usepackage{tikz}
-% \usepackage{framed} % Rahmen zeichnen
 
-% ===============================
-%    chapter/section numbering
-% ===============================
-\newcounter{question}
-\newcommand{\aufgabe}{\stepcounter{question}\bigskip\par\noindent{\normalfont\large\bfseries Aufgabe \arabic{question}}\medskip\par\noindent}
-\makeatletter\@addtoreset{chapter}{part}\makeatother%
+% -------[ Tables and Figures ]---------
+\usepackage{graphicx}
+\setkeys{Gin}{draft=false} % disable draft for graphicx to see pictures in draft-mode
+
+\usepackage{booktabs,longtable,tabularx,ltxtable}
+% \usepackage{multirow}
+
+\usepackage{enumerate}
+\usepackage{enumitem} % change numbering
+\usepackage{tikz,adjustbox}
+
+\usepackage[prefix=solarized-]{xcolor-solarized}
+
+% -------[ costum commands ]---------
+\newcommand{\TODO}[1]{\todo[linecolor=orange,backgroundcolor=orange!20,bordercolor=orange,inline,]{\textcolor{orange}{Todo:~}#1}}
+\newcommand{\REWRITE}[1]{\todo[linecolor=magenta,backgroundcolor=magenta!20,bordercolor=magenta,noline]{\textcolor{magenta}{Rewrite:~}#1}}
+\newcommand{\ADDFIGURE}[1]{\missingfigure[figcolor=white]{#1}}
+
+\newcounter{task}
+\DeclareRobustCommand{\task}{\stepcounter{task}\bigskip\par\noindent{\normalfont\large\bfseries\IfLanguage{english}{Task~}\IfLanguage{ngerman}{Aufgabe~}\arabic{task}}\medskip\par\noindent}
+\DeclareRobustCommand{\setup}{\bigskip\par\noindent{\normalfont\large\bfseries\IfLanguage{english}{Setup}\IfLanguage{ngerman}{Ausgangssituation}}\medskip\par\noindent}
+
+\DeclareRobustCommand{\tikzfigure}[2][\textwidth]{
+  \begin{adjustbox}{width=#1}
+    \begin{tikzpicture}[font=\sffamily]
+      \input{figures/#2}
+    \end{tikzpicture}
+  \end{adjustbox}
+}
+
+\newcommand{\IfLanguage}[2]{\IfLanguageName{#1}{#2}{}}

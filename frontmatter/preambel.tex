@@ -1,0 +1,41 @@
+%!TEX TS-program = pdflatexmk
+%!TEX root = ../handbook.tex
+
+% Copyright 2018 Martin Scheidt (ISC license)
+% Permission to use, copy, modify, and/or distribute this file for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
+\chapter*{\IfLanguage{english}{Aim and Materials}\IfLanguage{ngerman}{Ziel und Materialien}}
+
+\noindent
+\IfLanguage{english}{The aim of the learning game is to simulate and experience the driving dynamics of trains in the context of block division. This requires:}
+\IfLanguage{ngerman}{Ziel des Lernspieles ist die Fahrdynamik von Zügen im Zusammenhang mit Blockteilung zu simulieren und zu erfahren. Dafür wird benötigt:}
+\begin{itemize}
+  \IfLanguage{english}{
+    \item two trains with different driving dynamics
+    \item a track consisting of spaces
+    \item train berths
+    \item signals for block division
+    \item if necessary, turnouts
+  }
+  \IfLanguage{ngerman}{
+    \item zwei Züge mit unterschiedlicher Fahrdynamik
+    \item eine Strecke, bestehend aus Spielfeldern
+    \item Halteplätze für die Züge
+    \item Signale für die Blockteilung
+    \item ggf. Weichen
+  }
+\end{itemize}
+\IfLanguage{english}{Real continuous dimensions time ($t$) and distance ($s$) are assigned to discrete units of rounds ($t$) and spaces ($s$).
+Thus, the simulation is round-based in order to imitate the steps of a computer.}
+\IfLanguage{ngerman}{Reale kontinuierliche Größen Zeit ($t$) und Strecke ($s$) werden dabei in diskrete Einheiten von Runden ($t$) und Felder ($s$) eingeteilt.
+Die Simulation erfolgt also Rundenbasiert, um im Schrittverfahren einen Computer nachzuahmen.}
+
+\vspace*{\fill}
+
+\IfLanguage{english}{
+  {\noindent\large Version \vhCurrentVersion\ from \vhCurrentDate } \\[0.3cm]
+  \ccLogo \ccAttribution ~This work is licensed under a Creative Commons License (CC BY 4.0).
+}
+\IfLanguage{ngerman}{
+  {\noindent\large Version \vhCurrentVersion\ vom \vhCurrentDate } \\[0.3cm]
+  \ccLogo \ccAttribution ~Dieses Werk steht unter der Creative Commons Lizens (CC BY 4.0).
+}

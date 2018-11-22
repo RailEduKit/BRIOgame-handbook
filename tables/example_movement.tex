@@ -1,0 +1,52 @@
+%!TEX TS-program = pdflatexmk
+%!TEX root = ../handbook.tex
+
+% Copyright 2018 Martin Scheidt (ISC license)
+% Permission to use, copy, modify, and/or distribute this file for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
+
+\begin{tabularx}{0.95\textwidth}{rcccX}
+  \toprule
+  \IfLanguage{english}{
+    Round & current    & 1.Step    & 2.Step      & \\
+          & speed      & Move      & shift lever & \\
+          &            &           & on          & \\
+  }
+  \IfLanguage{ngerman}{
+    Runde & aktuelle   & 1.Schritt & 2.Schritt   & \\
+          & Geschwin-  & Bewegen   & Schalthebel & \\
+          & digkeit    & um        & auf         & \\
+  }
+  \hline
+  $1$   &   \SI{0}{\kilo\metre\per\hour} &
+  $0$
+    \IfLanguage{english}{fields}
+    \IfLanguage{ngerman}{Felder}
+  &  \SI{40}{\kilo\metre\per\hour} & \tikzfigure[\linewidth]{movement_example1.tikz}
+  \\
+  $2$   &  \SI{40}{\kilo\metre\per\hour} &
+  $1$
+    \IfLanguage{english}{field}
+    \IfLanguage{ngerman}{Feld}
+  &  \SI{80}{\kilo\metre\per\hour} & \tikzfigure[\linewidth]{movement_example2.tikz}
+  \\
+  $3$   &  \SI{80}{\kilo\metre\per\hour} &
+  $2$
+    \IfLanguage{english}{fields}
+    \IfLanguage{ngerman}{Felder}
+  & \SI{120}{\kilo\metre\per\hour} & \tikzfigure[\linewidth]{movement_example3.tikz}
+  \\
+  $4$   & \SI{120}{\kilo\metre\per\hour} &
+  $3$
+    \IfLanguage{english}{fields}
+    \IfLanguage{ngerman}{Felder}
+  & \SI{120}{\kilo\metre\per\hour} & \tikzfigure[\linewidth]{movement_example4.tikz}
+  \\
+  $5$   & \SI{120}{\kilo\metre\per\hour} &
+  $3$
+    \IfLanguage{english}{fields}
+    \IfLanguage{ngerman}{Felder}
+  & \SI{120}{\kilo\metre\per\hour} & \tikzfigure[\linewidth]{movement_example5.tikz}
+  \\
+  etc. & & & & \\
+  \bottomrule
+\end{tabularx}

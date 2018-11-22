@@ -1,0 +1,126 @@
+%!TEX TS-program = pdflatexmk
+%!TEX root = ../handbook.tex
+
+% Copyright 2018 Martin Scheidt (ISC license)
+% Permission to use, copy, modify, and/or distribute this file for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
+
+\part{\IfLanguage{english}{Challenges}\IfLanguage{ngerman}{Aufgaben}}
+  
+\chapter{\IfLanguage{english}{First Stage}\IfLanguage{ngerman}{Erste Stufe}}
+  \section{\IfLanguage{english}{Introduction to Driving Dynamics}\IfLanguage{ngerman}{Einführung Fahrdynamik}}
+    \setup
+      \begin{itemize}
+        \IfLanguage{english}{
+          \item A single train,
+          \item Line with fields $-2$ to $37$,
+          \item Platform A at field $-2$ to $0$,
+          \item Platform B at field $14$ to $16$,
+          \item Platform C at field $35$ to $37$.
+        }
+        \IfLanguage{ngerman}{
+          \item ein Zug,
+          \item Strecke mit Feldern $-2$ bis $37$,
+          \item Bahnsteig A am Feld $-2$ bis $0$,
+          \item Bahnsteig B am Feld $14$ bis $16$,
+          \item Bahnsteig C am Feld $35$ bis $37$.
+        }
+      \end{itemize}
+    \task
+      \IfLanguage{english}{ The train (on field $0$ towards $37$) stands still and has its shift lever at \SI{0}{\kilo\metre\per\hour}.}
+      \IfLanguage{ngerman}{Der Zug (auf Feld $0$ in Richtung $37$) steht und hat seinen Schalthebel auf \SI{0}{\kilo\metre\per\hour}.}
+      \begin{enumerate}[label=\alph*)]
+        \IfLanguage{english}{
+          \item If the train accelerates as much as possible, which field can it get to in \emph{nine} rounds?
+          \item How many rounds are minimally needed, if the train stops at every station?
+        }
+        \IfLanguage{ngerman}{
+          \item Wenn der Zug maximal beschleunigt, bis zu welchen Feld gelangt er in \emph{neun} Runden?
+          \item Wie viele Runden benötigt man minimal, wenn der Zug in jedem Bahnhof halten soll?
+        }
+      \end{enumerate}
+      \IfLanguage{english}{Note the solution steps in a protocol!}
+      \IfLanguage{ngerman}{Notiere die Lösungschritte in einem Protokoll!}
+      \begin{center}
+        \IfLanguage{english}{Example for a protocol:}
+        \IfLanguage{ngerman}{Beispiel für ein Protokoll:}
+        \\
+        \input{tables/example_protocol.tex}
+      \end{center}
+    \task
+      \IfLanguage{english}{ The train (on field $0$ towards $37$) just passes through the first station and has its shift lever on maximum speed.}
+      \IfLanguage{ngerman}{Der Zug (auf Feld $0$ in Richtung $37$) fährt gerade durch den ersten Bahnhof durch und hat seinen Schalthebel auf der maximalen Geschwindigkeit.}
+      \begin{enumerate}[label=a)]
+        \IfLanguage{english}{
+          \item How many fields does the train need to come to a stop?
+          \item How many rounds are needed if the train shall leave the track completely without stopping?
+        }
+        \IfLanguage{ngerman}{
+          \item Wie viele Felder braucht der Zug, bis er zum Stehen gekommen ist?
+          \item Wie viele Runden benötigt man, wenn der Zug ohne Halt die Strecke vollständig verlassen soll?
+        }
+      \end{enumerate}
+
+  \section{\IfLanguage{english}{Sight and Braking Distance}\IfLanguage{ngerman}{Sicht- und Bremsweg}}
+    \setup
+      \IfLanguage{english}{Unknown line with different visibility conditions:}
+      \IfLanguage{ngerman}{Unbekannte Strecke mit verschiedenen Sichtverhältnissen:}
+      \\[0.5cm]
+      \input{tables/visibility_conditions.tex}
+    \task
+      \begin{enumerate}[label=\alph*)]
+        \IfLanguage{english}{
+          \item What is the maximum speed for the train with very good visibility in order to stop in front of an obstacle in time?
+          \item How many rounds are minimally needed, to arrive safely with normal visibility in a $14$ fields away station?
+          \item How many fields far would you have to be able to see in order to drive \SI{160}{\kilo\metre\per\hour}?
+        }
+        \IfLanguage{ngerman}{
+          \item Wie schnell kann der Zug bei sehr gutem Sichtverhältnis maximal Fahren um vor einem Hindernis rechtzeitig anzuhalten?
+          \item Wie viele Runden benötigt man minimal, um gefahrlos bei normalen Sichtverhältnissen in einem $14$ Felder entfernten Bahnhof zu gelangen?
+          \item Wie viele Felder weit müsste man sehen können, um \SI{160}{\kilo\metre\per\hour} fahren zu können?
+        }
+      \end{enumerate}
+
+\chapter{\IfLanguage{english}{Second Stage}\IfLanguage{ngerman}{Zweite Stufe}}
+  \section{\IfLanguage{english}{Block Segmentation}\IfLanguage{ngerman}{Blockteilung}}
+    \setup
+      \IfLanguage{english}{One train and any length of line, with at least 3 complete blocks.
+      A block consists of: visual point, distant signal, main signal, signal clearing point and clearing distance.}
+      \IfLanguage{ngerman}{Ein Zug und eine beliebig lange Strecke, mit mindestens 3 vollständigen Blöcken.
+      Ein Block besteht aus: Sichtpunkt, Vorsignal, Hauptsignal, Signalzugschlussstelle und Räumweg.}
+    \task
+      \begin{enumerate}[label=\alph*)]
+        \IfLanguage{english}{
+          \item Place the distant and main signals so that \SI{160}{\kilo\metre\per\hour} can be driven and bad visibility does not lead to impairment!
+          \item How many rounds is a block occupied with a train running (complete blocking time)?
+        }
+        \IfLanguage{ngerman}{
+          \item Platziere die Vor- und Hauptsignale mindestens so, dass \SI{160}{\kilo\metre\per\hour} gefahren werden kann und schlechte Sichtverhältnisse nicht zur Beeinträchtigung führt!
+          \item Wie viele Runden ist ein Block mit einer Zugfahrt belegt (vollständige Sperrzeit)?
+        }
+      \end{enumerate}
+
+  \section{\IfLanguage{english}{Traffic Flow}\IfLanguage{ngerman}{Verkehrsfluss}}
+    \setup
+      \begin{itemize}
+        \IfLanguage{english}{
+          \item Two different trains with different train dynamics.
+          \item Any length of the track, with at least 3 complete blocks.
+          \item At the beginning and the end of the track, a station with switches can be arranged or the track can be lead in a circle.
+        }
+        \IfLanguage{ngerman}{
+          \item Zwei verschiedene Züge mit unterschiedlicher Fahrdynamik.
+          \item Beliebige Länge der Strecke, mit mindestens 3 vollständigen Blöcken.
+          \item Am Anfang und Ende der Strecke kann jeweils ein Bahnhof mit Weichen angeordnet werden oder die Strecke im Kreis geführt werden.
+        }
+      \end{itemize}
+    \task
+      \begin{enumerate}[label=\alph*)]
+        \IfLanguage{english}{
+          \item How many rounds are needed if both trains shall run unimpeded and the fast train runs in front of the slow train?
+          \item How many rounds are needed if both trains shall run unimpeded and the slow train runs in front of the fast train?
+        }
+        \IfLanguage{ngerman}{
+          \item Wie viele Runden benötigt man, wenn beide Züge behinderungsfrei fahren sollen und der \emph{schnelle} vor dem \emph{langsamen} Zug fährt?
+          \item Wie viele Runden benötigt man, wenn beide Züge behinderungsfrei fahren sollen und der \emph{langsame} vor dem \emph{schnellen} Zug fährt?
+        }
+      \end{enumerate}
