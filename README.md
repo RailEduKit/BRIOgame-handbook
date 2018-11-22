@@ -1,28 +1,30 @@
 edugame-rail-traffic-flow
 ======
+Version 0.4
+------
+* neutral design
+* english version
 
 Version 0.3
 ------
   
-  Dieses Handbuch erstellt.
+  created this manual.
 
 Version 0.2
 ------
 
-  Lehrspiel mit Blocklogik erweitert.
+  extended educational game with block logic.
 
 Version 0.1
 ------
 
-  ersten Prototyp mit Fahrdynamik erstellt.
+  created first prototype with driving dynamics.
 
 Roadmap
 ------
 
-* Instituts unabhängige Version
-* english version
-* Holzbau mit Anleitung
-* Sammlung von Zügen mit entsprechender Fahrdynamik
-* Fahrstraßen
-* Zugnummern
-* dispatching
+* wood construction with instructions
+* Collection of trains with appropriate driving dynamics
+* extend game with routes
+* extend game with train numbers
+* extend game with dispatching
