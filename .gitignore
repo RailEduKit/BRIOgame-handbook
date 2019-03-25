@@ -243,6 +243,7 @@ TSWLatexianTemp*
 
 # sublime text with LaTeX
 Output
+.tex
 
 # OS X temporary files that should never be committed
 #

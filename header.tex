@@ -97,7 +97,6 @@
 \setkeys{Gin}{draft=false} % disable draft for graphicx to see pictures in draft-mode
 
 \usepackage{booktabs,longtable,tabularx,ltxtable}
-% \usepackage{multirow}
 
 \usepackage{enumerate}
 \usepackage{enumitem} % change numbering
@@ -117,7 +116,7 @@
 \DeclareRobustCommand{\tikzfigure}[2][\textwidth]{
   \begin{adjustbox}{width=#1}
     \begin{tikzpicture}[font=\sffamily]
-      \input{figures/#2}
+      \input{\ROOT/figures/#2}
     \end{tikzpicture}
   \end{adjustbox}
 }
