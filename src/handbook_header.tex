@@ -10,6 +10,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[main=english,ngerman]{babel}
 \usepackage{iflang}
+\newcommand{\IfLanguage}[2]{\IfLanguageName{#1}{#2}{}}
 
 % % --------[   revision history    ]----------
 \usepackage{vhistory}
@@ -20,7 +21,7 @@
 \usepackage{ifdraft}
 \ifdraft{%
   \usepackage{draftwatermark}
-  \SetWatermarkColor{solarized-base1!10}
+  \SetWatermarkColor{base1!10}
 }{}
 %
 \setlength{\marginparwidth }{2cm}
@@ -34,9 +35,7 @@
 \displaywidowpenalty=10000
 \clubpenalty=10000
 \widowpenalty=10000
-\usepackage{microtype}
-\usepackage{lmodern}
-\usepackage{mathptmx,courier}
+\usepackage{lmodern,microtype,mathptmx,courier}
 \usepackage[scaled=0.92]{helvet}
 
 \usepackage[
@@ -52,35 +51,6 @@
 % \@addtoreset{chapter}{part} % reset chapter numbering for each part
 \patchcmd{\scr@startchapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{} % remove page break after chapter
 \makeatother
-
-% -----------[ PDF linking ]----------------
-\usepackage[
-  pdftex,
-  pdfpagelabels, % modify PDF page labels
-  hyperindex,
-  hyperfigures,
-  bookmarksopen,
-  bookmarksnumbered,
-  draft=false,
-  pageanchor=true, % Determines whether every page is given an implicit anchor at the top left corner
-  %pagebackref, % Adds backlink text to the end of each item in the bibliography, as a list of page numbers
-  %linktocpage, % make page number, not text, be link on TOC, LOF and LOT
-  breaklinks=true, % allow links to break over lines by making links over multiple lines into PDF links to the same target
-  colorlinks=true, % Colors the text of links and anchors
-  citecolor=solarized-violet, % Color for bibliographical citations in text
-  linkcolor=solarized-base01, % Color for normal internal links
-  urlcolor=solarized-blue, % Color for web links
-]{hyperref} % PDF with a linked TableOfContent
-\usepackage{bookmark} % Adding package bookmark improves bookmarks handling.
-\usepackage{url}
-
-% -------[ PDF Informations ]---------
-\hypersetup{
-  pdftitle={Traffic Flow in Railway Systems},
-  pdfsubject={game based learning},
-  pdfauthor={Martin Scheidt and contributers},
-  pdfkeywords={railway, railroad, infrastructure, serious game},
-}
 
 % -------[ Symbols ]---------
 \usepackage{amsmath,amsthm}
@@ -102,8 +72,6 @@
 \usepackage{enumitem} % change numbering
 \usepackage{tikz,adjustbox}
 
-\usepackage[prefix=solarized-]{xcolor-solarized}
-
 % -------[ costum commands ]---------
 \newcommand{\TODO}[1]{\todo[linecolor=orange,backgroundcolor=orange!20,bordercolor=orange,inline,]{\textcolor{orange}{Todo:~}#1}}
 \newcommand{\REWRITE}[1]{\todo[linecolor=magenta,backgroundcolor=magenta!20,bordercolor=magenta,noline]{\textcolor{magenta}{Rewrite:~}#1}}
@@ -120,5 +88,3 @@
     \end{tikzpicture}
   \end{adjustbox}
 }
-
-\newcommand{\IfLanguage}[2]{\IfLanguageName{#1}{#2}{}}

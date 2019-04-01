@@ -4,13 +4,15 @@
 % Copyright 2018 RailToolKit (Attribution 4.0 International, CC-BY 4.0)
 % You are free to copy and redistribute the material in any medium or format. You are free to remix, transform, and build upon the material for any purpose, even commercially. You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits. No warranties are given.
 
+\input{\ROOT/src/signals.tikz}
+
 \begin{tabular}{rcc}
   \toprule
   & 
-    \IfLanguage{english}{halt}
+    \IfLanguage{english}{stop}
     \IfLanguage{ngerman}{Halt}
   &
-    \IfLanguage{english}{proceed}
+    \IfLanguage{english}{clear}
     \IfLanguage{ngerman}{Fahrt}
   \\
   \hline
@@ -18,13 +20,11 @@
     \IfLanguage{ngerman}{Hauptsignal}
   &
   \begin{tikzpicture}[anchor=base,baseline=-3]
-    \draw [fill=red] (0,0) circle (0.3);
-    \draw (-0.3,0) -- (0.3,0);
+    \pic at (0,0) {stop};
     \path (-0.5,-0.5) rectangle ++(1,1); % background rectangle to unify every cell containing a symbol
   \end{tikzpicture} &
   \begin{tikzpicture}[anchor=base,baseline=-3]
-    \draw [fill=green] (0,0) circle (0.3);
-    \draw (0,-0.3) -- (0,0.3);
+    \pic at (0,0) {clear};
     \path (-0.5,-0.5) rectangle ++(1,1); % background rectangle to unify every cell containing a symbol
   \end{tikzpicture}
   \\
@@ -32,13 +32,11 @@
     \IfLanguage{ngerman}{Vorsignal}
   &
   \begin{tikzpicture}[anchor=base,baseline=-3]
-    \draw [fill=yellow] (0,0) circle (0.3);
-    \draw (-0.22,-0.22) -- ++(0.44,0.44);
+    \pic at (0,0) {approach};
     \path (-0.5,-0.5) rectangle ++(1,1); % background rectangle to unify every cell containing a symbol
   \end{tikzpicture} &
   \begin{tikzpicture}[anchor=base,baseline=-3]
-    \draw [fill=green] (0,0) circle (0.3);
-    \draw (0,-0.3) -- (0,0.3);
+    \pic at (0,0) {clear};
     \path (-0.5,-0.5) rectangle ++(1,1); % background rectangle to unify every cell containing a symbol
   \end{tikzpicture} \\
   \bottomrule

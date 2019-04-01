@@ -6,6 +6,16 @@
 \documentclass[tikz,border=2,preview=true]{standalone}
 
 \usepackage[prefix=]{xcolor-solarized}
+\usepackage[main=english,ngerman]{babel}
+\usepackage{iflang} % needs babel
+\newcommand{\IfLanguage}[2]{\IfLanguageName{#1}{#2}{}}
+\usepackage{lmodern,microtype,mathptmx,courier}
+\usepackage{xfrac} % provides slanted fractures with \sfrac{}{}
+\usepackage{siunitx} % for SI-Units
+\sisetup{
+  per-mode=fraction,
+  fraction-function=\sfrac
+}
 
 \begin{document}
   \begin{tikzpicture}[font=\sffamily]

@@ -16,7 +16,9 @@
 ]{scrbook}
 
 \def\ROOT{.}
-\input{\ROOT/header.tex}
+\input{\ROOT/src/handbook_header.tex}
+\input{\ROOT/src/colors.tex}
+\input{\ROOT/src/hyperref.tex}
 
 \begin{document}
 
@@ -39,5 +41,6 @@
   \cleardoublepage
   \appendix
   \input{\ROOT/backmatter/versionhistory.tex}
+  \vhListAllAuthorsLongWithAbbrev
 
 \end{document}

@@ -1,5 +1,13 @@
 edugame-rail-traffic-flow
 ======
+Version 0.5
+------
+* added Material for paper based game:
+** papercut tracks, signals, and trains
+** collection of trains with appropriate driving dynamics
+** protocol template
+* minor improvements and some refactoring
+
 Version 0.4
 ------
 * neutral design
@@ -24,7 +32,6 @@ Roadmap
 ------
 
 * wood construction with instructions
-* Collection of trains with appropriate driving dynamics
 * extend game with routes
 * extend game with train numbers
 * extend game with dispatching
