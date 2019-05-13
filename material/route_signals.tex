@@ -12,26 +12,35 @@
 \def\ROOT{./..}
 \input{\ROOT/src/material_header.tex}
 \input{\ROOT/src/colors.tex}
+% \input{\ROOT/src/hyperref.tex}
+
+\tikzset{
+  pics/route_signal_stop/.style args={#1}{
+    code={
+      \draw[loosely dashdotted] (0,1) -- ( 0,0) -- ++(8,0) -- ++(0,1);
+      \draw[line width=4pt] (7.5,-0.5) -- ++(1,0);
+      \fill (7.8,-0.5) circle (0.2);
+      \fill (8.2,-0.5) circle (0.2);
+      \draw[line width=4pt] (0,-0.5) -- ++(0,-2);
+      \draw[line width=4pt] (0,-1.5) -- ++(4, 0);
+      \draw[line width=4pt,fill=base1] (4,-0.5) -- ++(2,0) arc (-90:-270:-1) -- ++(-2,0) -- cycle;
+      \draw[fill=#1] (6,-1.5) circle (0.8);
+      \draw[double] (6.0,-0.7) -- ++(0,-1.6);
+    }
+  },
+  pics/route_signal_stop/.default=signalred,
+}
 
 \begin{document}
   \selectlanguage{ngerman} % currently supported: english, ngerman
   \tikzset{every path/.style={ultra thick}}
   \begin{frame}
+    \vfill
     \begin{tikzpicture}[font=\sffamily]
-      \begin{scope}[shift={(0,6)}]
-        \draw ( 0,0) rectangle ++(8,4.5);
-        \draw ( 8,0) rectangle ++(8,4.5);
-        \draw (16,0) rectangle ++(8,4.5);
-        \draw (0,-3) -- (0,-0.5) -- (24,-0.5) -- (24,-3);
-        \draw (0,-1) -- (24,-1);
-      \end{scope}
-      \begin{scope}[shift={(0,-3)}]
-        \draw ( 0,0) rectangle ++(8,4.5);
-        \draw ( 8,0) rectangle ++(8,4.5);
-        \draw (16,0) rectangle ++(8,4.5);
-        \draw (0,-3) -- (0,-0.5) -- (24,-0.5) -- (24,-3);
-        \draw (0,-1) -- (24,-1);
-      \end{scope}
+      \foreach \x in {0,9.5,19}
+        \foreach \y in {0,5}
+          \pic at (\x,\y) {route_signal_stop};
     \end{tikzpicture}
+    \vfil
   \end{frame}
 \end{document}
