@@ -18,27 +18,28 @@
   pics/route_signal_stop/.style args={#1}{
     code={
       \draw[loosely dashdotted] (0,1) -- ( 0,0) -- ++(8,0) -- ++(0,1);
-      \draw[line width=4pt] (7.5,-0.5) -- ++(1,0);
-      \fill (7.8,-0.5) circle (0.2);
-      \fill (8.2,-0.5) circle (0.2);
-      \draw[line width=4pt] (0,-0.5) -- ++(0,-2);
-      \draw[line width=4pt] (0,-1.5) -- ++(4, 0);
-      \draw[line width=4pt,fill=base1] (4,-0.5) -- ++(2,0) arc (-90:-270:-1) -- ++(-2,0) -- cycle;
-      \draw[fill=#1] (6,-1.5) circle (0.8);
-      \draw[double] (6.0,-0.7) -- ++(0,-1.6);
+     
+      \draw[line width=4pt] (0,0) -- ++(0,-1.5) -- ++(4, 0); % signal pole
+      \draw[line width=4pt,fill=base1!50] (5,-1.5) circle (1); % signal screen
+      \draw[fill=#1] (5,-1.5) circle (0.5); % signal aspect
+      \draw[double] (5,-1) -- ++(0,-1); % signal aspect
+      \node[right] at (0.2,-1) {
+        \IfLanguage{english}{\Large route signal}
+        \IfLanguage{ngerman}{\Large Fahrstraßensignal}
+      }; % label
     }
   },
   pics/route_signal_stop/.default=signalred,
 }
 
 \begin{document}
-  \selectlanguage{ngerman} % currently supported: english, ngerman
+  \selectlanguage{english} % currently supported: english, ngerman
   \tikzset{every path/.style={ultra thick}}
   \begin{frame}
     \vfill
     \begin{tikzpicture}[font=\sffamily]
       \foreach \x in {0,9.5,19}
-        \foreach \y in {0,5}
+        \foreach \y in {0,5,10,15}
           \pic at (\x,\y) {route_signal_stop};
     \end{tikzpicture}
     \vfil

@@ -1,0 +1,102 @@
+%!TEX TS-program = pdflatexmk
+
+% Copyright 2019 Martin Scheidt (Attribution 4.0 International, CC-BY 4.0)
+% You are free to copy and redistribute the material in any medium or format. You are free to remix, transform, and build upon the material for any purpose, even commercially. You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits. No warranties are given.
+
+\documentclass{beamer}
+\usepackage[
+  size=a4,
+]{beamerposter}
+\beamertemplatenavigationsymbolsempty
+
+\def\ROOT{./..}
+\input{\ROOT/src/material_header.tex}
+\input{\ROOT/src/colors.tex}
+
+\newlength{\spacewidth}\setlength{\spacewidth}{4.2cm}
+\newlength{\spacelength}\setlength{\spacelength}{8cm}
+\newlength{\corpuslength}\setlength{\corpuslength}{4cm}
+
+\tikzset{
+  pics/key/.style args={#1}{
+    code={
+      \filldraw[#1]    (-0.5,0) ellipse   (0.25cm and 0.5cm);
+      \filldraw[white] (-0.5,0) ellipse   (0.1cm and 0.35cm);
+      \filldraw[#1]    (-0.25,-0.1) rectangle (0.75,0.1);
+      \filldraw[#1]    ( 0.45,-0.1) rectangle (0.55,-0.2);
+      \filldraw[#1]    ( 0.6 ,-0.1) rectangle (0.7,-0.3);
+    }
+  },
+  pics/key/.default=black,
+}
+
+\tikzset{
+  pics/flank_protection_symbol/.style = {
+    code={
+      \draw[<-> ,>=latex] (-0.65,-0.1) -- (0.65,-0.1);
+      \draw[->|,>=latex,red] ( 0  , 0.4) -- (0   ,0   );
+    }
+  },
+}
+
+\tikzset{
+  pics/flank_marker/.style = {
+    code={
+      % drawing
+      \draw (0,0) rectangle ( 2, 2);
+      \draw (0,2) rectangle ( 2, 4);
+      \draw (0,0) rectangle ( 2,-2);
+      \draw (2,2) rectangle ( 4, 0);
+      \draw (0,0) rectangle (-2, 2);
+      %
+      \pic at (1,1) {flank_protection_symbol};
+      % adhesive edge
+      \tikzset{every path/.style={thin,base1}}
+      \draw (0,0) -- ++(-1,-0.5) -- ++(0,-1) -- (0,-2);
+      \draw (2,0) -- ++( 1,-0.5) -- ++(0,-1) -- (2,-2);
+      \draw (0,2) -- ++(-1, 0.5) -- ++(0, 1) -- (0, 4);
+      \draw (2,2) -- ++( 1, 0.5) -- ++(0, 1) -- (2, 4);
+    } 
+  },
+}
+
+\tikzset{
+  pics/key_locker/.style = {
+    code={
+      % drawing
+      \draw (0,0) rectangle ( 4, 2);
+      % \draw (0,2) rectangle ( 4, 4);
+      \draw (0,2) -- (4,2) -- (4,4) -- (3.5,4) -- (3,3.5) -- (1,3.5) -- (0.5,4) -- (0,4) -- cycle;
+      % \draw (0,0) rectangle ( 4,-2);
+      \draw (0,0) -- (4,0) -- (4,-2) -- (3.5,-2) -- (3,-1.5) -- (1,-1.5) -- (0.5,-2) -- (0,-2) -- cycle;
+      \draw (4,2) rectangle ( 6, 0);
+      \draw (0,0) rectangle (-2, 2);
+      %
+      \pic at (2,1) {key};
+      % adhesive edge
+      \tikzset{every path/.style={thin,base1}}
+      \draw (0,0) -- ++(-1,-0.5) -- ++(0,-1) -- (0,-2);
+      \draw (4,0) -- ++( 1,-0.5) -- ++(0,-1) -- (4,-2);
+      \draw (0,2) -- ++(-1, 0.5) -- ++(0, 1) -- (0, 4);
+      \draw (4,2) -- ++( 1, 0.5) -- ++(0, 1) -- (4, 4);
+    } 
+  },
+}
+
+\begin{document}
+  \selectlanguage{ngerman} % currently supported: english, ngerman
+  \tikzset{every path/.style={ultra thick}}
+  \begin{frame}
+    \begin{tikzpicture}[remember picture,overlay,font=\sffamily]
+      \path (current page.north west) rectangle (current page.south west); % rectangle for background to unify orientation
+      \begin{scope}[shift={(1.5,-12)}]
+        \foreach \x in {0,6.2}
+          \foreach \y in {2.5,9,15.5}
+            \pic at (\x,\y) {flank_marker};
+        \foreach \x in {12.4,20.6}
+          \foreach \y in {2.5,9,15.5}
+            \pic at (\x,\y) {key_locker};
+      \end{scope}
+    \end{tikzpicture}
+  \end{frame}
+\end{document}

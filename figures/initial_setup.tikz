@@ -15,7 +15,7 @@
     \IfLanguage{ngerman}{Bahnsteig A}
   };
   \path[draw, line width=1pt, fill=white] (0.9,0.25) -- ++(-0.2,-0.2) -- ++(-2.6,0) -- ++(0,0.4) -- ++(2.6,0) -- cycle; % train
-  \draw [->] ([shift={(base)}] 5,1.4) -- ([shift={(base)}] 0.85,0.35) node [near start,align=right,fill=white] {
+  \draw [->] ([shift={(base)}] 5.5,1.4) -- ([shift={(base)}] 0.85,0.35) node [near start,align=right,fill=white] {
     \IfLanguage{english}{Train (direction of travel to the right)}
     \IfLanguage{ngerman}{Zug (Fahrtrichtung rechts)}
   };

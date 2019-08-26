@@ -1,0 +1,17 @@
+%!TEX TS-program = pdflatexmk
+
+% Copyright 2019 Martin Scheidt (Attribution 4.0 International, CC-BY 4.0)
+% You are free to copy and redistribute the material in any medium or format. You are free to remix, transform, and build upon the material for any purpose, even commercially. You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits. No warranties are given.
+
+\begin{scope}
+  \coordinate (base) at (0,0);
+  \path[draw, line width=2pt] ( 0,0) -- ++(19,0);
+  \path[draw, line width=2pt] ( 0,1) -- ++(1,0) -- ++(1,-1);
+  \path[draw, line width=1pt,fill] (2,0) --  ++(-0.4,0.4) -- ++(0,-0.4); % turnout marker
+  \path[draw, line width=2pt] (17,0) -- ++(1,1) -- ++(1,0);
+  \path[draw, line width=1pt,fill] (17,0) --  ++(0.4,0.4) -- ++(0,-0.4); % turnout marker
+  \node at ( 0,2) {\Large A};
+  \node at (19,2) {\Large B};
+  \path[draw, line width=1pt, fill=white] (0,0) -- ++(-0.2,-0.2) -- ++(-2.6,0) -- ++(0,0.4) -- ++(2.6,0) -- cycle; % train
+  \path[draw, line width=1pt, fill=white] (0,1) -- ++(-0.2,-0.2) -- ++(-2.6,0) -- ++(0,0.4) -- ++(2.6,0) -- cycle; % train
+\end{scope}

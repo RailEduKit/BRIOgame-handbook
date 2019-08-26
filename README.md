@@ -1,6 +1,16 @@
 edugame-rail-traffic-flow
 ======
 
+Version 0.6.1
+------
+extended tasks for routes
+
+
+Version 0.6
+------
+added routes and route locking
+
+
 Version 0.5.1
 ------
 minor improvements and some refactoring

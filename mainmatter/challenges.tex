@@ -126,3 +126,72 @@
           \item Wie viele Runden werden benötigt vom Einbruch des ersten Zuges bis zum verlassen des zweiten Zuges, wenn beide Züge behinderungsfrei fahren sollen und der \emph{langsame} vor dem \emph{schnellen} Zug fährt?
         }
       \end{enumerate}
+
+\newpage
+\chapter{\IfLanguage{english}{Third Stage}\IfLanguage{ngerman}{Dritte Stufe}}
+  \section{\IfLanguage{english}{Route Locking}\IfLanguage{ngerman}{Fahrstraßenverschluss und -festlegung}}
+    \setup
+      \begin{itemize}
+        \IfLanguage{english}{
+          \item Two different trains with different vehicle dynamics.
+          \item A line with at least two complete blocks.
+          \item A station with routes at the beginning and end of the line.
+          \item The trains start at the first station and are supposed to run to the second one.
+        }
+        \IfLanguage{ngerman}{
+          \item Zwei verschiedene Züge mit unterschiedlicher Fahrdynamik.
+          \item Eine Strecke, mit mindestens 2 vollständigen Blöcken.
+          \item Je ein Bahnhof mit Fahrstraßen am Begin und Ende der Strecke.
+          \item Die Züge stehen zu Beginn im ersten Bahnhof und sollen in den zweiten Fahren.
+        }
+      \end{itemize}
+      \IfLanguage{english}{The turnouts may only be passed at \SI{80}{\kilo\metre\per\hour} along the branching track. The speed in the straight track is not limited.}
+      \IfLanguage{ngerman}{Die Weichen dürfen im abzweigenden Strang jeweils nur mit \SI{80}{\kilo\metre\per\hour} befahren werden. Im durchgehenden Strang ist die Geschwindigkeit nicht begrenzt.}\\[0.25cm]
+      \tikzfigure{challenge3_setup1.tikz}
+    \task
+      \begin{enumerate}[label=\alph*)]
+        \IfLanguage{english}{ 
+          \item Pick a train to leave and explain why not the other one!
+          \item How many laps does it take for the second train to depart?
+          \item How many laps does it take for both trains (sum of the laps of train 1 and train 2) to arrive at the destination station?
+        }
+        \IfLanguage{ngerman}{
+          \item Wähle den Zug aus, der als erster abfahren soll und begründe!
+          \item Wie viele Runden dauert es bis der zweite Zug abfahren kann?
+          \item Wie viele Runden dauert es bis beide Züge (Summe der Runden von Zug 1 und Zug 2) im Zielbahnhof angekommen sind?
+        }
+      \end{enumerate}
+
+  \section{\IfLanguage{english}{Overlap}\IfLanguage{ngerman}{Durchrutschweg}}
+    \setup
+      \IfLanguage{english}{TODO!}
+      \IfLanguage{ngerman}{In einem Bahnhof (zwei Gleise, drei Weichen gemäß Skizze) sollen sich zwei Züge kreuzen. Der Zug von links (Zug 1) ist etwa 25 Felder vom Einfahrsignal entfernt, fährt mit maximaler Geschwindigkeit und hat keinen Verkehrshalt im Bahnhof. Der Zug von rechts (Zug 2) befindet sich etwa 15 Felder vor dem Einfahrsignal, fährt ebenfalls mit maximaler Geschwindigkeit und hat einen Verkehrshalt (min. 2 Runden) im Bahnhof. Fahrstraßen sind keine eingestellt. Die Weichen können im abzweigenden Strang mit \SI{80}{\kilo\metre\per\hour} befahren werden.}\\[0.25cm]
+      \tikzfigure{challenge3_setup2.tikz}
+    \task
+      \begin{enumerate}[label=\alph*)]
+        \IfLanguage{english}{
+          \item TODO!
+        }
+        \IfLanguage{ngerman}{
+          \item Entscheide begründet welcher Zug auf welches Gleis fahren soll. Welche Probleme können auftreten?
+          \item Nach wie viel Runden ist Zug 2 im Bahnhof zum stehen gekommen?
+          \item Nach wie viel Runden hat Zug 1 den Bahnhof vollständig verlassen?
+        }
+      \end{enumerate}
+
+  \section{\IfLanguage{english}{Dual protection points}\IfLanguage{ngerman}{Zwieschutzweiche}}
+    \setup
+      \IfLanguage{english}{TODO!}
+      \IfLanguage{ngerman}{Zwei Züge stehen im Startbahnhof (drei Gleise, drei Weichen mit Zwischutzweiche in der Mitte gemäß Skizze) vor den Ausfahrsignalen. Am Bahnhofskopf beginnt eine zweigleisige Strecke.  Von der Strecke (ca. 20 Felder entfernt) nähert sich Zug 3. Zug 3 soll im Bahnhof einfahren. Die Züge 1 und 2 sollen vom Bahnhof auf die Strecke ausfahren (Rechtsfahrbetrieb).}\\[0.25cm]
+      \tikzfigure{challenge3_setup3.tikz}
+    \task
+      \begin{enumerate}[label=\alph*)]
+        \IfLanguage{english}{
+          \item TODO!
+        }
+        \IfLanguage{ngerman}{
+          \item Sichere die Ausfahrstraße für Zug 1!
+          \item Sichere die Einfahrstraße für Zug 3!
+          \item Sichere die Fahrstraße für Zug 2, nachdem Zug 1 ausgefahren ist. Welches Problem tritt auf? Wie kann es gelöst werden?
+        }
+      \end{enumerate}

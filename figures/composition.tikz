@@ -21,30 +21,25 @@
   };
   % distant signal
   \draw [dashed] ([shift={(base)}] 2,-0.1) -- ++(0,-0.2) -- ++(1,0) -- ++(0,0.2);
-  \path[draw, line width=1pt] ([shift={(base)}] 2,-0.5) -- ++(0,-0.2);
-  \path[draw, line width=1pt] ([shift={(base)}] 2,-0.6) -- ++(0.5,0);
-  \path[draw, fill] ([shift={(base)}] 2.5,-0.75) rectangle ++(0.2,0.3);
-  \path[draw, fill] ([shift={(base)}] 2.5,-0.45) arc (90:270:0.15);
-  \draw [->] ([shift={(base)}] 5.0,-0.5) -- ([shift={(base)}] 2.9,-0.6) node [near start,align=right,fill=white] {
+  \path[draw, line width=1pt] ([shift={(base)}] 2,-0.3) -- ++(0,-0.2) -- ++(0.3,0);
+  \path[draw, line width=1pt] ([shift={(base)}] 2.3,-0.5) -- ++(0.2,0.15) -- ++(0,-0.3) -- cycle;
+  \draw [->] ([shift={(base)}] 5.0,-0.5) -- ([shift={(base)}] 2.9,-0.5) node [near start,align=right,fill=white] {
     \IfLanguage{english}{distant signal}
     \IfLanguage{ngerman}{Vorsignal}
   };
-  % main signal
+  % block signal
   \draw [dashed] ([shift={(base)}] 9,-0.1) -- ++(0,-0.2) -- ++(1,0) -- ++(0,0.2);
-  \path[draw, line width=1pt] ([shift={(base)}] 9,-0.5) -- ++(0,-0.2);
-  \path[draw, line width=1pt] ([shift={(base)}] 9,-0.6) -- ++(0.5,0);
-  \path[draw, fill] ([shift={(base)}] 9.5,-0.75) rectangle ++(0.2,0.3);
-  \path[draw, fill] ([shift={(base)}] 9.7,-0.75) arc (90:270:-0.15);
+  \path[draw, line width=1pt] ([shift={(base)}] 9,-0.3) -- ++(0,-0.2) -- ++(0.5,0);
+  \path[draw, line width=1pt] ([shift={(base)}] 9.5,-0.65) rectangle ++(0.3,0.3);
   \draw [->] ([shift={(base)}] 6.5,-1.2) -- ([shift={(base)}] 8.9,-0.6) node [near start,align=right,fill=white] {
-    \IfLanguage{english}{main signal}
-    \IfLanguage{ngerman}{Hauptsignal}
+    \IfLanguage{english}{block signal}
+    \IfLanguage{ngerman}{Blocksignal}
   };
-  % axle counter
-  \path[draw, line width=1pt] ([shift={(base)}] 9.85,-0.4) -- ++(0.3,0);
-  \path[draw, line width=1pt, fill] ([shift={(base)}]  9.94,-0.4) circle (0.04);
-  \path[draw, line width=1pt, fill] ([shift={(base)}] 10.06,-0.4) circle (0.04);
+  % clearing point
+  \path[draw, line width=1pt] ([shift={(base)}] 10,-0.3) -- ++(0,-0.1);
+  \path[draw, line width=1pt] ([shift={(base)}] 9.95,-0.4) rectangle ++(0.1,-0.1);
   \draw [->] ([shift={(base)}] 13.5,-0.8) -- ([shift={(base)}] 10.2,-0.45) node [near start,align=right,fill=white] {
-    \IfLanguage{english}{track vacancy detector}
-    \IfLanguage{ngerman}{Gleisfreimeldegrenze}
+    \IfLanguage{english}{block clearing point}
+    \IfLanguage{ngerman}{Signalzugschlussstelle}
   };
 \end{scope}
