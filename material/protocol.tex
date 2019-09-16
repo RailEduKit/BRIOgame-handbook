@@ -5,15 +5,10 @@
 
 \documentclass[
   % draft,
-  paper=a4,
-  version=3.25,
-  pagesize=pdftex,
-  twoside=false,
-  DIV=12,
-  headinclude=true,
-  footinclude=false,
-  toc=listof,
+  paper=a4
 ]{scrartcl}
+
+\usepackage{fullpage}
 
 \def\ROOT{./..}
 \input{\ROOT/src/handbook_header.tex}
@@ -21,12 +16,23 @@
 \begin{document}
   \selectlanguage{ngerman} % currently supported: english, ngerman
 
-  \thispagestyle{empty}
+  \pagestyle{empty}
+
   \begin{center}
     \IfLanguage{english}{\Large protocol}
     \IfLanguage{ngerman}{\Large Protokoll}
     \\
     \vfil\normalsize
     \input{\ROOT/tables/protocol.tex}
+    \vfil
+
+    \newpage
+    
+    \IfLanguage{english}{\Large protocol}
+    \IfLanguage{ngerman}{\Large Protokoll}
+    \\
+    \vfil\normalsize
+    \input{\ROOT/tables/protocol.tex}
+    \vfil
   \end{center}
 \end{document}

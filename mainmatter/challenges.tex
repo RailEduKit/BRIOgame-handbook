@@ -9,56 +9,36 @@
 \chapter{\IfLanguage{english}{First Stage}\IfLanguage{ngerman}{Erste Stufe}}
   \section{\IfLanguage{english}{Introduction to Driving Dynamics}\IfLanguage{ngerman}{Einführung Fahrdynamik}}
     \setup
+      \IfLanguage{english}{TODO}
+      \IfLanguage{ngerman}{Auf einem Gleis soll ein beliebiger Zug verkehren, mit:}
       \begin{itemize}
         \IfLanguage{english}{
-          \item A single train,
-          \item Line with fields    $-2$ to $39$,
-          \item Platform A at field $-2$ to $0$,
-          \item Platform B at field $13$ to $15$,
-          \item Platform C at field $37$ to $39$.
+          \item\todo{}
+          % \item A single train on field $0$ towards $39$.
         }
         \IfLanguage{ngerman}{
-          \item ein Zug,
-          \item Strecke mit Feldern $-2$ bis $39$,
-          \item Bahnsteig A am Feld $-2$ bis $0$,
-          \item Bahnsteig B am Feld $13$ bis $15$,
-          \item Bahnsteig C am Feld $37$ bis $39$.
+          \item Infrastruktur wie unten abgebildet
+          \item der Zug steht auf Feld $0$ in Richtung $39$
         }
       \end{itemize}
+      \tikzfigure{challenge1_setup.tikz}
     \task
-      \IfLanguage{english}{ The train (on field $0$ towards $39$) stands still and has its shift lever at \SI{0}{\kilo\metre\per\hour}.}
-      \IfLanguage{ngerman}{Der Zug (auf Feld $0$ in Richtung $39$) steht und hat seinen Schalthebel auf \SI{0}{\kilo\metre\per\hour}.}
+      \IfLanguage{english}{The train stands still and has its shift lever at \SI{0}{\kilo\metre\per\hour}.}
+      \IfLanguage{ngerman}{Der Zug steht und hat seinen Schalthebel auf \SI{0}{\kilo\metre\per\hour}.}
       \begin{enumerate}[label=\alph*)]
         \IfLanguage{english}{
           \item If the train accelerates as much as possible, which field can it get to in \emph{nine} laps?
           \item How many laps are minimally needed, if the train stops at every station?
+          \item The train  passes through the first station and has its shift lever on maximum speed. How many laps are needed if the train shall leave the track completely without stopping?
         }
         \IfLanguage{ngerman}{
           \item Wenn der Zug maximal beschleunigt, bis zu welchen Feld gelangt er in \emph{neun} Runden?
-          \item Wie viele Runden benötigt man minimal, wenn der Zug in jedem Bahnhof halten soll?
+          \item Wie viele Runden benötigt man minimal, wenn der Zug an jedem Bahnsteig halten soll?
+          \item Der Zug fährt gerade am Bahnsteig A vorbei und hat seinen Schalthebel auf der maximalen Geschwindigkeit. Wie viele Runden benötigt man, wenn der Zug ohne Halt die Strecke vollständig verlassen soll?
         }
       \end{enumerate}
       \IfLanguage{english}{Note the solution steps in a protocol!}
       \IfLanguage{ngerman}{Notiere die Lösungschritte in einem Protokoll!}
-      % \begin{center}
-      %   \IfLanguage{english}{Example for a protocol:}
-      %   \IfLanguage{ngerman}{Beispiel für ein Protokoll:}
-      %   \\
-      %   \input{\ROOT/tables/example_protocol.tex}
-      % \end{center}
-    \task
-      \IfLanguage{english}{ The train (on field $0$ towards $39$) just passes through the first station and has its shift lever on maximum speed.}
-      \IfLanguage{ngerman}{Der Zug (auf Feld $0$ in Richtung $39$) fährt gerade durch den ersten Bahnhof durch und hat seinen Schalthebel auf der maximalen Geschwindigkeit.}
-      \begin{enumerate}[label=\alph*)]
-        \IfLanguage{english}{
-          \item How many fields does the train need to come to a stop?
-          \item How many laps are needed if the train shall leave the track completely without stopping?
-        }
-        \IfLanguage{ngerman}{
-          \item Wie viele Felder braucht der Zug, bis er zum Stehen gekommen ist?
-          \item Wie viele Runden benötigt man, wenn der Zug ohne Halt die Strecke vollständig verlassen soll?
-        }
-      \end{enumerate}
       
   \newpage
 
@@ -83,38 +63,50 @@
       \end{enumerate}
 
 \chapter{\IfLanguage{english}{Second Stage}\IfLanguage{ngerman}{Zweite Stufe}}
-  \section{\IfLanguage{english}{Block Segmentation}\IfLanguage{ngerman}{Blockteilung}}
+  \section{\IfLanguage{english}{Block Segmentation}\IfLanguage{ngerman}{Blockteilung}}\label{sec:Blockteilung}
     \setup
-      \IfLanguage{english}{One train and any length of line, with at least 3 complete blocks.
-      A block consists of: visual point, distant signal, main signal, signal clearing point and clearing distance.}
-      \IfLanguage{ngerman}{Ein Zug und eine beliebig lange Strecke, mit mindestens 3 vollständigen Blöcken.
-      Ein Block besteht aus: Sichtpunkt, Vorsignal, Hauptsignal, Signalzugschlussstelle und Räumweg.}
+      \IfLanguage{english}{TODO}
+      \IfLanguage{ngerman}{Auf einer Strecke sollen mit Blocklogik verschiedene Züge verkehren können! Dafür wird benötigt:}
+      \begin{itemize}
+        \IfLanguage{english}{
+          \item\todo{}
+        }
+        \IfLanguage{ngerman}{
+          \item eine beliebig lange Strecke
+          \item 3 vollständige Blöcke mit Vorsignal, Hauptsignal und Signalzugschlussstelle.
+          \item mindestens ein Zug
+        }
+      \end{itemize}
     \task
       \begin{enumerate}[label=\alph*)]
         \IfLanguage{english}{
+          \item\todo{}
           \item Place the distant and main signals so that \SI{160}{\kilo\metre\per\hour} can be driven and bad visibility does not lead to impairment!
           \item How many laps is a block occupied with a train run minimally (complete blocking time)?
         }
         \IfLanguage{ngerman}{
-          \item Platziere die Vor- und Hauptsignale mindestens so, dass \SI{160}{\kilo\metre\per\hour} gefahren werden kann und schlechte Sichtverhältnisse nicht zur Beeinträchtigung führt!
-          \item Wie viele Runden ist ein Block mit einer Zugfahrt minimal belegt (vollständige Sperrzeit)?
+          \item Platziere die Vorsignale, Hauptsignale und Signalzugschlussstelle so, dass \SI{160}{\kilo\metre\per\hour} gefahren werden kann und schlechte Sichtverhältnisse nicht zur Beeinträchtigung führt!
+          \item Wie viele Runden dauert die vollständige Sperrzeit für die Fahrt durch einen Block (Sichtzeit, Annährungszeit, Fahrzeit im Block, Räumzeit)?
         }
       \end{enumerate}
 
   \section{\IfLanguage{english}{Traffic Flow}\IfLanguage{ngerman}{Verkehrsfluss}}
     \setup
+      \IfLanguage{english}{TODO}
+      \IfLanguage{ngerman}{Auf einer Strecke sollen mit Blocklogik verschiedene Züge verkehren! Dafür wird benötigt:}
       \begin{itemize}
         \IfLanguage{english}{
+          \item\todo{}
           \item Two different trains with different train dynamics.
           \item A track with at least 3 complete blocks.
-          \item Trains enter the system at the beginning of the track. At the end of the track trains exit the system. The infrastructure before and after the line is neglected.
         }
         \IfLanguage{ngerman}{
-          \item Zwei verschiedene Züge mit unterschiedlicher Fahrdynamik.
-          \item Eine Strecke, mit mindestens 3 vollständigen Blöcken.
-          \item Am Anfang der Strecke brechen Züge ein. Am Ende der Strecke brechen Züge aus. Die Infrastruktur vor und nach der Strecke wird vernachlässigt.
+          \item zwei Züge mit verschiedener Fahrdynamik
+          \item die Strecke aus Abschnitt \ref{sec:Blockteilung}
         }
       \end{itemize}
+      \IfLanguage{english}{Trains enter the system at the beginning of the track; trains exit the system at the end of the track. The infrastructure before and after the line is neglected.}
+      \IfLanguage{ngerman}{Am Anfang der Strecke brechen Züge ein; am Ende der Strecke brechen Züge aus. Die Infrastruktur vor und nach der Strecke wird vernachlässigt.}
     \task
       \begin{enumerate}[label=\alph*)]
         \IfLanguage{english}{
@@ -131,63 +123,100 @@
 \chapter{\IfLanguage{english}{Third Stage}\IfLanguage{ngerman}{Dritte Stufe}}
   \section{\IfLanguage{english}{Route Locking}\IfLanguage{ngerman}{Fahrstraßenverschluss und -festlegung}}
     \setup
+      \IfLanguage{english}{TODO}
+      \IfLanguage{ngerman}{Die Zugfolge zwischen zwei Bahnhöfen mit Weichen soll betrachtet werden! Dafür wird benötigt:}
       \begin{itemize}
         \IfLanguage{english}{
+          \item\todo{}
           \item Two different trains with different vehicle dynamics.
           \item A line with at least two complete blocks.
           \item A station with routes at the beginning and end of the line.
           \item The trains start at the first station and are supposed to run to the second one.
         }
         \IfLanguage{ngerman}{
-          \item Zwei verschiedene Züge mit unterschiedlicher Fahrdynamik.
-          \item Eine Strecke, mit mindestens 2 vollständigen Blöcken.
-          \item Je ein Bahnhof mit Fahrstraßen am Begin und Ende der Strecke.
-          \item Die Züge stehen zu Beginn im ersten Bahnhof und sollen in den zweiten Fahren.
+          \item Infrastruktur wie unten abgebildet mit mindestens \emph{zwei} vollständigen Blöcke
+          \item zwei Züge mit verschiedener Fahrdynamik im Bahnhof A
         }
       \end{itemize}
+      \begin{center}
+        \tikzfigure[0.7\textwidth]{challenge3_setup1.tikz}
+      \end{center}
       \IfLanguage{english}{The turnouts may only be passed at \SI{80}{\kilo\metre\per\hour} along the branching track. The speed in the straight track is not limited.}
       \IfLanguage{ngerman}{Die Weichen dürfen im abzweigenden Strang jeweils nur mit \SI{80}{\kilo\metre\per\hour} befahren werden. Im durchgehenden Strang ist die Geschwindigkeit nicht begrenzt.}\\[0.25cm]
-      \tikzfigure{challenge3_setup1.tikz}
     \task
       \begin{enumerate}[label=\alph*)]
-        \IfLanguage{english}{ 
+        \IfLanguage{english}{
+          \item\todo{}
           \item Pick a train to leave and explain why not the other one!
           \item How many laps does it take for the second train to depart?
           \item How many laps does it take for both trains (sum of the laps of train 1 and train 2) to arrive at the destination station?
         }
         \IfLanguage{ngerman}{
+          \item Ergänze die Infrastruktur mit Vorsignalen, Blocksignalen, Fahrstraßensignalen, Signalzugschlussstellen und Fahrstraßenzugschlussstellen!
           \item Wähle den Zug aus, der als erster abfahren soll und begründe!
           \item Wie viele Runden dauert es bis der zweite Zug abfahren kann?
           \item Wie viele Runden dauert es bis beide Züge (Summe der Runden von Zug 1 und Zug 2) im Zielbahnhof angekommen sind?
         }
       \end{enumerate}
 
+  \newpage
+
   \section{\IfLanguage{english}{Overlap}\IfLanguage{ngerman}{Durchrutschweg}}
     \setup
       \IfLanguage{english}{TODO!}
-      \IfLanguage{ngerman}{In einem Bahnhof (zwei Gleise, drei Weichen gemäß Skizze) sollen sich zwei Züge kreuzen. Der Zug von links (Zug 1) ist etwa 25 Felder vom Einfahrsignal entfernt, fährt mit maximaler Geschwindigkeit und hat keinen Verkehrshalt im Bahnhof. Der Zug von rechts (Zug 2) befindet sich etwa 15 Felder vor dem Einfahrsignal, fährt ebenfalls mit maximaler Geschwindigkeit und hat einen Verkehrshalt (min. 2 Runden) im Bahnhof. Fahrstraßen sind keine eingestellt. Die Weichen können im abzweigenden Strang mit \SI{80}{\kilo\metre\per\hour} befahren werden.}\\[0.25cm]
-      \tikzfigure{challenge3_setup2.tikz}
+      \IfLanguage{ngerman}{In einem Bahnhof sollen sich zwei Züge kreuzen! Dafür wird benötigt:}
+      \begin{itemize}
+        \IfLanguage{english}{
+          \item\todo{}
+        }
+        \IfLanguage{ngerman}{
+          \item Infrastruktur wie unten abgebildet
+          \item zwei Züge mit verschiedener Fahrdynamik in Fahrt mit maximaler Geschwindigkeit
+          \item Zug 1 fährt ohne Halt durch; Zug 2 hat einen Verkehrshalt von 2 Runden im Bahnhof
+        }
+      \end{itemize}
+      \begin{center}
+        \tikzfigure{challenge3_setup2.tikz}
+      \end{center}
+      \IfLanguage{english}{The turnouts may be passed at \SI{80}{\kilo\metre\per\hour} at the branching track. The overlap requires 2 fields.}
+      \IfLanguage{ngerman}{Die Weichen dürfen im abzweigenden Strang mit \SI{80}{\kilo\metre\per\hour} befahren werden. Der Durchrutschweg beträgt 2 Felder.}\\[0.25cm]
+
     \task
       \begin{enumerate}[label=\alph*)]
         \IfLanguage{english}{
-          \item TODO!
+          \item\todo{}!
         }
         \IfLanguage{ngerman}{
+          \item Ergänze die Infrastruktur mit Vorsignalen, Signalzugschlussstellen und Fahrstraßenzugschlussstellen!
           \item Entscheide begründet welcher Zug auf welches Gleis fahren soll. Welche Probleme können auftreten?
           \item Nach wie viel Runden ist Zug 2 im Bahnhof zum stehen gekommen?
           \item Nach wie viel Runden hat Zug 1 den Bahnhof vollständig verlassen?
+          \item Fertige vom Bahnhof einen Verschlussplan an!
         }
       \end{enumerate}
+
+  \newpage
 
   \section{\IfLanguage{english}{Dual protection points}\IfLanguage{ngerman}{Zwieschutzweiche}}
     \setup
       \IfLanguage{english}{TODO!}
-      \IfLanguage{ngerman}{Zwei Züge stehen im Startbahnhof (drei Gleise, drei Weichen mit Zwischutzweiche in der Mitte gemäß Skizze) vor den Ausfahrsignalen. Am Bahnhofskopf beginnt eine zweigleisige Strecke.  Von der Strecke (ca. 20 Felder entfernt) nähert sich Zug 3. Zug 3 soll im Bahnhof einfahren. Die Züge 1 und 2 sollen vom Bahnhof auf die Strecke ausfahren (Rechtsfahrbetrieb).}\\[0.25cm]
-      \tikzfigure{challenge3_setup3.tikz}
+      \IfLanguage{ngerman}{In einem Bahnhof mit Zwieschutzweiche begegenen sich Züge. Dafür wird benötigt:}\\[0.25cm]
+      \begin{itemize}
+        \IfLanguage{english}{
+          \item\todo{}
+        }
+        \IfLanguage{ngerman}{
+          \item Infrastruktur wie unten abgebildet (Rechtsfahrbetrieb)
+          \item drei Züge: Zug 1 und 2 stehen; Zug 3 fährt mit maximaler Geschwindigkeit
+        }
+      \end{itemize}
+      \begin{center}
+        \tikzfigure{challenge3_setup3.tikz}
+      \end{center}
     \task
       \begin{enumerate}[label=\alph*)]
         \IfLanguage{english}{
-          \item TODO!
+          \item\todo{}!
         }
         \IfLanguage{ngerman}{
           \item Sichere die Ausfahrstraße für Zug 1!

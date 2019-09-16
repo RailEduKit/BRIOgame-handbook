@@ -1,6 +1,11 @@
 edugame-rail-traffic-flow
 ======
 
+Version 0.7
+------
+reworking of game mechanics together with tasks and figures
+
+
 Version 0.6.1
 ------
 extended tasks for routes

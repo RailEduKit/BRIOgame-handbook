@@ -13,7 +13,7 @@
 
 \input{\ROOT/src/material_header.tex}
 \input{\ROOT/src/colors.tex}
-\input{\ROOT/src/signals.tikz}
+\input{\ROOT/src/signal_aspects.tikz}
 
 \newlength{\trainlength}\setlength{\trainlength}{20cm}
 \newlength{\trainheight}\setlength{\trainheight}{3cm}
@@ -33,8 +33,12 @@
     \draw[<-,>=latex,line width=1.5pt,green] (10.5,2)  .. controls (11,2.5) and (12,2.5) .. (12.5,2);
     \draw[<-,>=latex,line width=1.5pt,green] (13.5,2)  .. controls (14,2.5) and (15,2.5) .. (15.5,2);
     % lever positiions
-    \foreach \x in {0,3,6,9,12,15}
+    \foreach \x in {0,6,12,15}
       \draw [fill=white] (\x,0) rectangle ++(2,2);
+    \foreach \x in {3,9} {
+      \draw [fill=white] (\x,1.1) rectangle ++(2,0.9);
+      \draw [fill=white] (\x,0  ) rectangle ++(2,0.9);
+    };
     % labels
     \node[align=center] at ( 1,1.6) {\si{\kilo\metre\per\hour}};
     \node[align=center] at ( 1,1  ) {\Huge $0$};
@@ -42,19 +46,27 @@
       \IfLanguage{english}{fields}
       \IfLanguage{ngerman}{Felder}
     };
-    \node[align=center] at ( 4,1) {\Large \color{blue}
-      \IfLanguage{english}{\Large \color{blue} suspend\\\Large \color{blue} a\\\Large \color{blue} round}
-      \IfLanguage{ngerman}{\Large \color{blue} eine\\\Large \color{blue} Runde\\\Large \color{blue} aussetzen}
+    \node[align=center] at ( 4,0.5) {\Large \color{blue} $0$
+      \IfLanguage{english}{fields}
+      \IfLanguage{ngerman}{Felder}
+    };
+    \node[align=center] at ( 4,1.5) {\Large \color{blue} $1$
+      \IfLanguage{english}{field}
+      \IfLanguage{ngerman}{Feld}
     };
     \node[align=center] at ( 7,1.6) {\si{\kilo\metre\per\hour}};
     \node[align=center] at ( 7,1  ) {\Huge $40$};
     \node[align=center] at ( 7,0.3) {\Large \color{blue} $1$
+      \IfLanguage{english}{field}
+      \IfLanguage{ngerman}{Feld}
+    };
+    \node[align=center] at (10,0.5) {\Large \color{blue} $1$
+      \IfLanguage{english}{field}
+      \IfLanguage{ngerman}{Feld}
+    };
+    \node[align=center] at (10,1.5) {\Large \color{blue} $2$
       \IfLanguage{english}{fields}
       \IfLanguage{ngerman}{Felder}
-    };
-    \node[align=center] at (10,1) {\Large \color{blue}
-      \IfLanguage{english}{\Large \color{blue} suspend\\\Large \color{blue} a\\\Large \color{blue} round}
-      \IfLanguage{ngerman}{\Large \color{blue} eine\\\Large \color{blue} Runde\\\Large \color{blue} aussetzen}
     };
     \node[align=center] at (13,1.6) {\si{\kilo\metre\per\hour}};
     \node[align=center] at (13,1  ) {\Huge $80$};
