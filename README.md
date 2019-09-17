@@ -1,6 +1,11 @@
 edugame-rail-traffic-flow
 ======
 
+Version 0.7.1
+------
+Adapted signals for left- and right-hand traffic
+
+
 Version 0.7
 ------
 reworking of game mechanics together with tasks and figures
