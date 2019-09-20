@@ -23,13 +23,13 @@
 
     \input{\ROOT/src/game_procedure.tex}
 
-    \IfLanguage{english}{At the start of the game, the train stands still. Shift lever positions start at the ``$0$'' field.
+    \IfLanguage{english}{At the start of the game, the train stands still. control-lever positions start at the ``$0$'' field.
     The different train dynamics are depicted by different possible movements of the shift lever.}
     \IfLanguage{ngerman}{Beim Start des Spiels steht der Zug. Schalthebelposition beginnen bei dem Feld ``$0$''.
     Die unterschiedliche Fahrdynamik von Zügen wird durch unterschiedliche mögliche Schalthebelbewegung abgebildet.}
 
   \section{\IfLanguage{english}{Example of a simulated train movements}\IfLanguage{ngerman}{Beispiel einer simulierten Zugbewegung}}
-    \IfLanguage{english}{The shift lever is moved along the green arrows. Shift lever positions for a passenger train:}
+    \IfLanguage{english}{The control-lever is moved along the green arrows. control-lever positions for a passenger train:}
     \IfLanguage{ngerman}{Der Schalthebel wird entlang der grünen Pfeile bewegt. Schalthebelpositionen für einen Personenzug:}
     \begin{center}
       \tikzfigure[0.8\textwidth]{control_lever.tikz}
@@ -42,15 +42,15 @@
     \\[0.5cm]
     \IfLanguage{english}{ For the course of the learning game, we start with the first round and follow the process from the previous section \emph{\nameref{sec:Simulation}}.
     In the first round, the train from the initial condition stands still. In the example there are no signals that can be set.
-    We can move the shift lever by one position to \SI{40}{\kilo\metre\per\hour} forward. The round is over.}
+    We can move the control-lever by one position to \SI{40}{\kilo\metre\per\hour} forward. The round is over.}
     \IfLanguage{ngerman}{Für den Verlauf des Lernspiels beginnen wir mit der ersten Runde und befolgen den Ablauf aus vorheringen Abschnitt \emph{\nameref{sec:Simulation}}.
     In der ersten Runde steht der Zug aus der Anfangsbedingung. Im Beispiel gibt es keine Signale die eingestellt werden können.
     Wir können den Schalthebel um eine Position auf \SI{40}{\kilo\metre\per\hour} nach vorne bewegen. Die Runde ist beendet.}
 
     \IfLanguage{english}{ The second round begins with the execution of the movement one field to the right.
-    The shift lever can be moved on and the round is over.
+    The control-lever can be moved on and the round is over.
     The third round begins with the execution of the movement by \emph{two} fields to the right.
-    The shift lever can be moved on again and the round is over.
+    The control-lever can be moved on again and the round is over.
     Continue until the position of \SI{120}{\kilo\metre\per\hour} is reached and the train moves evenly with three fields per round.}
     \IfLanguage{ngerman}{Die zweite Runde beginnt mit dem Ausführen der Bewegung um ein Feld nach rechts.
     Der Schalthebel kann wieder weiterbewegt werden und die Runde ist damit beendet.

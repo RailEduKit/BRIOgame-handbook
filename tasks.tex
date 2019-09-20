@@ -5,34 +5,40 @@
 
 \documentclass[
   % draft,
-  paper=a4
-]{scrartcl}
+  paper=a4,
+  version=3.25,
+  pagesize=pdftex,
+  twoside=false,
+  DIV=12,
+  headinclude=true,
+  footinclude=false,
+  toc=listof,
+]{scrbook}
 
-\usepackage{fullpage}
-
-\def\ROOT{./..}
-\input{\ROOT/src/material_header.tex}
+\def\ROOT{.}
+\input{\ROOT/src/handbook_header.tex}
+\input{\ROOT/src/colors.tex}
+\input{\ROOT/src/hyperref.tex}
 
 \begin{document}
+
   \selectlanguage{english} % currently supported: english, ngerman
 
-  \pagestyle{empty}
+  \input{\ROOT/frontmatter/titlepage.tex}
 
-  \begin{center}
-    \IfLanguage{english}{\Large protocol}
-    \IfLanguage{ngerman}{\Large Protokoll}
-    \\
-    \vfil\normalsize
-    \input{\ROOT/tables/protocol.tex}
-    \vfil
+  \tableofcontents
+  \cleardoublepage
 
-    \newpage
-    
-    \IfLanguage{english}{\Large protocol}
-    \IfLanguage{ngerman}{\Large Protokoll}
-    \\
-    \vfil\normalsize
-    \input{\ROOT/tables/protocol.tex}
-    \vfil
-  \end{center}
+  \input{\ROOT/frontmatter/preambel.tex}
+
+  \cleardoublepage
+
+  \setcounter{part}{1}
+  \input{\ROOT/mainmatter/challenges.tex}
+
+  \cleardoublepage
+  \appendix
+  \input{\ROOT/backmatter/versionhistory.tex}
+  \vhListAllAuthorsLongWithAbbrev
+
 \end{document}

@@ -1,5 +1,10 @@
-edugame-rail-traffic-flow
+edugame-railway-operation
 ======
+
+Version 0.7.2
+------
+Supplemented tasks in English from version 0.6.1.
+Added separate tasks and manual PDF.
 
 Version 0.7.1
 ------
@@ -42,22 +47,21 @@ Version 0.4
 Version 0.3
 ------
   
-  created this manual.
+created this manual.
 
 Version 0.2
 ------
 
-  extended educational game with block logic.
+extended educational game with block logic.
 
 Version 0.1
 ------
 
-  created first prototype with driving dynamics.
+created first prototype with driving dynamics.
 
 Roadmap
 ------
 
 * wood construction with instructions
-* extend game with routes
 * extend game with train numbers
 * extend game with dispatching
