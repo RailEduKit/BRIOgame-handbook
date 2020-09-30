@@ -1,10 +1,16 @@
 edugame-railway-operation
 ======
 
+Version 1.0
+------
+Revision and new conceptual design
+
+
 Version 0.7.2
 ------
 Supplemented tasks in English from version 0.6.1.
 Added separate tasks and manual PDF.
+
 
 Version 0.7.1
 ------
@@ -57,11 +63,10 @@ extended educational game with block logic.
 Version 0.1
 ------
 
-created first prototype with driving dynamics.
+created first papercut prototype with driving dynamics.
 
 Roadmap
 ------
 
-* wood construction with instructions
 * extend game with train numbers
 * extend game with dispatching

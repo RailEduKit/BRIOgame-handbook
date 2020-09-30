@@ -12,27 +12,26 @@
   \draw ([shift={(base)}] 1,0) rectangle ++(1,0.5);
   \draw[line width=1pt] ([shift={(base)}] 1,0) -- ++(0,-0.2) -- ++(0.5,0);
   \draw[line width=1pt] ([shift={(base)}] 1.65,-0.2) circle (0.15cm);
+  \draw ([shift={(base)}] 2,0) rectangle ++(1,0.5);
 
   \draw ([shift={(base)}] 1,1) rectangle ++(1,0.5);
   \draw[line width=1pt] ([shift={(base)}] 1,1) -- ++(0,-0.2) -- ++(0.5,0);
   \draw[line width=1pt] ([shift={(base)}] 1.65,0.8) circle (0.15cm);
+  \draw ([shift={(base)}] 2,1) -- ++(0.6,0) -- ++(0.2,-0.2)  -- ++(0.4,0.4) -- ++(-0.3,0.3)  -- ++(-0.9,0) -- cycle;%  curve
 
-  \draw ([shift={(base)}] 2,0) -- ++(2,0) -- ++(0,0.5) -- ++(-1.5,1) -- ++(-0.5,0) -- cycle;
-  \node at  ([shift={(base)}] 3,0.5)  {
-    \IfLanguage{english}{turnout}
-    \IfLanguage{ngerman}{Weiche}
-  };
+  \draw ([shift={(base)}] 3,0) -- ++(1,0) -- ++(0,0.5) -- ++(-0.8,0.7) -- ++(-0.4,-0.4) -- ++(0.2,-0.15) -- cycle;
+  \node at  ([shift={(base)}] 3.5,-0.5)  {W1};
 
   \draw ([shift={(base)}] 4,0) rectangle ++(1,0.5);
   \draw[dotted] ([shift={(base)}] 5,0) rectangle ++(1,0.5);
   \draw[|<->|,>=latex] ([shift={(base)}] 4,0.85) -- ++(3,0) node[midway,fill=white] {25};
   \draw ([shift={(base)}] 6,0) rectangle ++(1,0.5);
 
-  \draw ([shift={(base)}] 9,0) -- ++(-2,0) -- ++(0,0.5) -- ++(1.5,1) -- ++(0.5,0) -- cycle;
-  \node at  ([shift={(base)}] 8,0.5)  {
-    \IfLanguage{english}{turnout}
-    \IfLanguage{ngerman}{Weiche}
-  };
+  \draw ([shift={(base)}] 8,0) -- ++(-1,0) -- ++(0,0.5) -- ++(0.8,0.7) -- ++(0.4,-0.4) -- ++(-0.2,-0.15) -- cycle;
+  \node at  ([shift={(base)}] 7.5,-0.5)  {W2};
+
+  \draw ([shift={(base)}] 9,1) -- ++(-0.6,0) -- ++(-0.2,-0.2)  -- ++(-0.4,0.4) -- ++(0.3,0.3)  -- ++(0.9,0) -- cycle;%  curve
+  \draw ([shift={(base)}] 8,0) rectangle ++(1,0.5);
 
   \draw ([shift={(base)}] 9,0) rectangle ++(1,0.5);
   \draw ([shift={(base)}] 9,1) rectangle ++(1,0.5);

@@ -12,7 +12,7 @@
 \def\ROOT{./..}
 
 \usepackage{material}
-\input{\ROOT/src/signal_aspects.tikz}
+\input{\ROOT/handout/figures/signal_aspects.tikz}
 
 \newlength{\trainlength}\setlength{\trainlength}{12cm}
 \newlength{\trainheight}\setlength{\trainheight}{3cm}
@@ -25,14 +25,14 @@
     \draw[->,>=latex,line width=1.5pt,green] ( 1.0,0)  .. controls ( 2,-1.0) and ( 6,-1.0) .. ( 7.0,0);
     \draw[->,>=latex,line width=1.5pt,green] ( 4.5,0)  .. controls ( 5,-0.5) and ( 6,-0.5) .. ( 6.5,0);
     \draw[->,>=latex,line width=1.5pt,green] ( 7.5,0)  .. controls ( 8,-0.5) and ( 9,-0.5) .. ( 9.5,0);
-    \draw[->,>=latex,line width=1.5pt,green] (10.5,0)  .. controls (11,-0.5) and (12,-0.5) .. (12.5,0);
+    % \draw[->,>=latex,line width=1.5pt,green] (10.5,0)  .. controls (11,-0.5) and (12,-0.5) .. (12.5,0);
     %
     \draw[<-,>=latex,line width=1.5pt,green] ( 1.5,2)  .. controls ( 2,2.5) and ( 3,2.5) .. ( 3.5,2);
     \draw[<-,>=latex,line width=1.5pt,green] ( 4.5,2)  .. controls ( 5,2.5) and ( 6,2.5) .. ( 6.5,2);
     \draw[<-,>=latex,line width=1.5pt,green] ( 7.5,2)  .. controls ( 8,2.5) and ( 9,2.5) .. ( 9.5,2);
-    \draw[<-,>=latex,line width=1.5pt,green] (10.5,2)  .. controls (11,2.5) and (12,2.5) .. (12.5,2);
+    % \draw[<-,>=latex,line width=1.5pt,green] (10.5,2)  .. controls (11,2.5) and (12,2.5) .. (12.5,2);
     % lever positiions
-    \foreach \x in {0,3,6,9,12}
+    \foreach \x in {0,3,6,9}
       \draw [fill=white] (\x,0) rectangle ++(2,2);
     % labels
     \node[align=center] at ( 1,1.6) {\si{\kilo\metre\per\hour}};
@@ -56,12 +56,6 @@
     \node[align=center] at (10,1.6) {\si{\kilo\metre\per\hour}};
     \node[align=center] at (10,1  ) {\Huge $120$};
     \node[align=center] at (10,0.3) {\Large \color{blue} $3$
-      \IfLanguage{english}{fields}
-      \IfLanguage{ngerman}{Felder}
-    };
-    \node[align=center] at (13,1.6) {\si{\kilo\metre\per\hour}};
-    \node[align=center] at (13,1  ) {\Huge $160$};
-    \node[align=center] at (13,0.3) {\Large \color{blue} $4$
       \IfLanguage{english}{fields}
       \IfLanguage{ngerman}{Felder}
     };
@@ -129,7 +123,7 @@
       \draw (F1) -- (F6) -- (F5) -- (F4);
       %
     \end{tikzpicture}
-    \input{\ROOT/frontmatter/copyright.tex}
+    \input{\ROOT/handout/frontmatter/copyright.tex}
   \end{frame}
   \begin{frame}
     \IfLanguage{english}{\Huge \textcolor{blue}{Control Lever:}}
@@ -139,7 +133,6 @@
         \pic at (0,0) {lever_positions};
       \end{scope}
     \end{tikzpicture}
-    \vfill
-    \input{\ROOT/tables/game_procedure.tex}
+    \vfill\input{\ROOT/handout/tables/game_procedure.tex}
   \end{frame}
 \end{document}

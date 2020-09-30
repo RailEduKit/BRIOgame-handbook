@@ -13,14 +13,14 @@
   headinclude=true,
   footinclude=false,
   toc=listof,
-]{scrbook}
+]{scrartcl}
 
 \def\ROOT{.}
 \usepackage{handbook}
 
 \begin{document}
 
-  \selectlanguage{english} % currently supported: english, ngerman
+  \selectlanguage{ngerman} % currently supported: english, ngerman
 
   \input{\ROOT/frontmatter/titlepage.tex}
 
@@ -31,7 +31,11 @@
 
   \cleardoublepage
 
-  \input{\ROOT/tutorial/manual.tex}
+  \input{\ROOT/tutorial/trainrun_de.tex}
+
+  \input{\ROOT/tutorial/followprotection_de.tex}
+
+  \input{\ROOT/tutorial/routeprotection_de.tex}
 
   \cleardoublepage
   \appendix

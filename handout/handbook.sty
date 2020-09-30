@@ -46,11 +46,9 @@
 
 \pagestyle{scrheadings}
 
+\usepackage{framed}
+
 \usepackage{etoolbox}
-\makeatletter
-% \@addtoreset{chapter}{part} % reset chapter numbering for each part
-\patchcmd{\scr@startchapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{} % remove page break after chapter
-\makeatother
 
 % -------[ Symbols ]---------
 \usepackage{amsmath,amsthm}
@@ -72,6 +70,7 @@
 \usepackage{enumitem} % change numbering
 \usepackage{tikz,adjustbox}
 \usetikzlibrary{babel}
+\usetikzlibrary{shapes.geometric}
 
 % -------[ costum commands ]---------
 \newcommand{\TODO}[1]{\todo[linecolor=orange,backgroundcolor=orange!20,bordercolor=orange,inline,]{\textcolor{orange}{Todo:~}#1}}
@@ -81,6 +80,9 @@
 \newcounter{task}[chapter] % reset couter <<task>> with each new chapter
 \DeclareRobustCommand{\task}{\stepcounter{task}\bigskip\par\noindent{\normalfont\large\bfseries\IfLanguage{english}{Task~}\IfLanguage{ngerman}{Aufgabe~}\arabic{chapter}.\arabic{task}}\medskip\par\noindent}
 \DeclareRobustCommand{\setup}{\bigskip\par\noindent{\normalfont\large\bfseries\IfLanguage{english}{Setup}\IfLanguage{ngerman}{Ausgangssituation}}\medskip\par\noindent}
+\DeclareRobustCommand{\roles}{\bigskip\par\noindent{\normalfont\large\bfseries\IfLanguage{english}{Roles}\IfLanguage{ngerman}{Rollen}}\medskip\par\noindent}
+\DeclareRobustCommand{\material}{\bigskip\par\noindent{\normalfont\large\bfseries\IfLanguage{english}{Material}\IfLanguage{ngerman}{Material}}\medskip\par\noindent}
+\DeclareRobustCommand{\phase}[1]{\noindent{\normalfont\itshape\IfLanguage{english}{Phase #1:}\IfLanguage{ngerman}{Phase #1:~}}}
 
 \DeclareRobustCommand{\tikzfigure}[2][0.995\textwidth]{
   \begin{adjustbox}{width=#1}
