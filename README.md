@@ -3,7 +3,7 @@ edugame-railway-operation
 
 Version 1.0
 ------
-Revision and new conceptual design
+Revision and new conceptual design of the handbook.
 
 
 Version 0.7.2
@@ -68,5 +68,7 @@ created first papercut prototype with driving dynamics.
 Roadmap
 ------
 
+* translate handbook 1.0 from german to english
 * extend game with train numbers
 * extend game with dispatching
+* extend game with simulations of malfunctions and disruptions

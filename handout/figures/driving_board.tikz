@@ -36,12 +36,12 @@
     \IfLanguage{ngerman}{Schalthebel}
   };
   \draw [<-] (-3.0,1.9) -- ++(0,1.7) node [at end,right,align=left,shift={(-0.2,0)},fill=white] {
-    \IfLanguage{english}{counter rounds}
-    \IfLanguage{ngerman}{Runden Zähler}
-  };
-  \draw [<-] (-3.7,1.9) -- ++(0,1.7) node [at end,left,align=right,shift={(0.45,-0.05)},fill=white] {
     \IfLanguage{english}{counter position}
     \IfLanguage{ngerman}{Positions Zähler}
+  };
+  \draw [<-] (-3.7,1.9) -- ++(0,1.7) node [at end,left,align=right,shift={(0.45,-0.05)},fill=white] {
+    \IfLanguage{english}{counter rounds}
+    \IfLanguage{ngerman}{Runden Zähler}
   };
   \draw [<-] (2.5,-0.5) -- ++(0,-0.9) node [at end,fill=white] {
     \IfLanguage{english}{control lever movements}
