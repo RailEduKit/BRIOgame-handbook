@@ -1,6 +1,11 @@
 edugame-railway-operation
 ======
 
+Version 1.0.1
+------
+Fixing minor errors
+
+
 Version 1.0
 ------
 Revision and new conceptual design of the handbook.
