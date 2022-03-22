@@ -1,5 +1,6 @@
 edugame-railway-operation
 ======
+[![DOI](https://zenodo.org/badge/246667488.svg)](https://zenodo.org/badge/latestdoi/246667488)
 
 Version 1.0.1
 ------
