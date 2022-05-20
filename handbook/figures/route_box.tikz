@@ -8,7 +8,7 @@
   \draw (0,4) circle [radius=0.75];
   \draw (1.2,4.25) -- ++(-0.25,-0.25) -- ++(0.25,-0.25) -- ++(0.25,0.25) -- cycle;
   \draw (0,2) circle [radius=0.75];
-  \draw[pattern=north west lines] (1.2,2.25) -- ++(-0.25,0) arc (0:-90:-0.25cm and 0.45cm) -- cycle;
+  \draw[fill=black!20] (1.2,2.25) -- ++(-0.25,0) arc (0:-90:-0.25cm and 0.45cm) -- cycle;
   \draw (1.2,2.25) -- ++(0.25,0) arc (0:-90:0.25cm and 0.45cm) -- cycle;
   \draw (0,0) circle [radius=0.75];
   \draw (1.2,0) circle [radius=0.25];
