@@ -59,6 +59,8 @@ acs-*.bib
 
 # changes
 *.soc
+*.hst
+*.ver
 
 # cprotect
 *.cpt
